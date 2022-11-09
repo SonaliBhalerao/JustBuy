@@ -1,7 +1,7 @@
 import React from "react";
-import { Footer } from "./components/footer/Footer.jsx";
-import {Navbar} from "./components/Navbar/Navbar.jsx"
-import { NavbarBottom } from "./components/Navbar/navbar_bottom_menu/NavbarBottom.jsx";
+import { Footer } from "./Components/footer/Footer";
+import {Navbar} from "./Components/Navbar/Navbar"
+import { NavbarBottom } from "./Components/Navbar/navbar_bottom_menu/NavbarBottom.jsx";
 import { MainRoutes } from "./Pages/MainRoutes.jsx";
 function App() {
   return (
