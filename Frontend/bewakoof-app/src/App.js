@@ -1,13 +1,15 @@
-import { ChakraProvider, theme } from '@chakra-ui/react';
-import './App.css';
-import MensProductPage from './Components/Men/MensProductPage';
-
+import React from "react";
+import { Footer } from "./Components/footer/Footer";
+import {Navbar} from "./Components/Navbar/Navbar"
+import { NavbarBottom } from "./Components/Navbar/navbar_bottom_menu/NavbarBottom.jsx";
+import { MainRoutes } from "./Pages/MainRoutes.jsx";
 function App() {
   return (
-    <div className="App">
-      <ChakraProvider theme={theme}>
-       <MensProductPage />
-       </ChakraProvider>
+    <div >
+      <Navbar/>
+      <NavbarBottom/>
+      <MainRoutes/>
+      <Footer/>
     </div>
   );
 }
