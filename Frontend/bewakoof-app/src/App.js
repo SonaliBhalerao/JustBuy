@@ -1,10 +1,15 @@
-import './App.css';
-import MainRoutes from './Pages/MainRoutes';
-
+import React from "react";
+import { Footer } from "./components/footer/Footer.jsx";
+import {Navbar} from "./components/Navbar/Navbar.jsx"
+import { NavbarBottom } from "./components/Navbar/navbar_bottom_menu/NavbarBottom.jsx";
+import { MainRoutes } from "./Pages/MainRoutes.jsx";
 function App() {
   return (
-    <div className="App">
-      <MainRoutes />
+    <div >
+      <Navbar/>
+      <NavbarBottom/>
+      <MainRoutes/>
+      <Footer/>
     </div>
   );
 }
