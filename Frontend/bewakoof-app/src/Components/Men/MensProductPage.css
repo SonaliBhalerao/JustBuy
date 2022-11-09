@@ -1,0 +1,26 @@
+.heading-MenC{
+    /* border: 1px solid red; */
+    text-align: left;
+}
+.mainBox-MenC{
+    padding: 50px;
+}
+.leftRight-flex{
+    /* border: 1px solid red; */
+    justify-content:space-between;
+}
+
+.leftRight-flex>box{
+    /* border: 1px solid red; */
+}
+
+.rightBox{
+    width: 72%;
+    border: 3px solid red;
+    overflow: scroll;
+}
+
+.leftBox{
+    width: 308px;
+    /* border: 1px solid red; */
+}
