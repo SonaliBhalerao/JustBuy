@@ -2,18 +2,14 @@
 import { Box, Flex,  useDisclosure, Spacer,Button,  HStack, InputGroup, InputLeftElement, Input,Drawer,DrawerBody,
     DrawerHeader,DrawerOverlay,DrawerContent,DrawerCloseButton, Heading,  VStack,
     Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react';
-// import { HamburgerIcon, SearchIcon} from '@chakra-ui/icons';
 import React from 'react';
 import './Navbar.css'
 import { MensDropDown } from './mensdropdown/MensDropDown';
 import { WomensDropDown } from './womensdropdown/WomensDropDown';
 import {Link} from "react-router-dom"
 import SmileIcon from '../Icons/SmileIcon';
-// import { HamburgerIcon,  } from '@chakra-ui/icons'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
-
-
 
 
 export const Navbar = () => {

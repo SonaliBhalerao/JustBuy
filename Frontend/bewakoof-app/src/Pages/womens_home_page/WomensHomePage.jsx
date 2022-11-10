@@ -7,7 +7,7 @@ import { TheStupidCollectionWomen } from '../../Components/womens_page/TheStupid
 import { WomensCarousel } from '../../Components/womens_page/WomensCarousel'
 import { WomensSmallCarousel } from '../../Components/womens_page/WomensSmallCarousel'
 import { WomensDiscountPeDiscount } from '../../Components/womens_page/Womens_Discount_Pe_Discount/WomensDiscountPeDiscount'
-
+ 
 export const WomensHomePage = () => {
   return (
     <Box >

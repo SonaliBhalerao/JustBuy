@@ -1,0 +1,49 @@
+*{
+    font-family:"Montserrat";
+}
+
+.heading-MenC{
+    /* border: 1px solid red; */
+    text-align: left;
+}
+.mainBox-MenC{
+    border: 1px solid red;
+    /* padding: 0px 50px 0px 50px; */
+}
+.leftRight-flex{
+    border: 1px solid red;
+    justify-content:space-between;
+    padding-bottom: 50px;
+}
+
+.leftRight-flex>box{
+    border: 1px solid red;
+}
+
+/* .rightBox{
+    width: 72%;
+    height: 680px;
+    border: 1px solid red;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+} */
+
+.leftBox{
+    width: 308px;
+    /* border: 1px solid red; */
+}
+
+.mapBox{
+   /* border: 1px solid red; */
+}
+
+.mapBox:hover img {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
