@@ -101,7 +101,7 @@ const Address = () => {
 								{/* Pin code field */}
 
 								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" />
+									<Input placeholder=" " size="lg" id="pin" />
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
