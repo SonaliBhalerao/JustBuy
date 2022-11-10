@@ -23,10 +23,10 @@ export const WomensHomePage = () => {
         <Box py={"20px"} >
           <Image width={"100%"} src='https://images.bewakoof.com/uploads/grid/app/thun-strip-new-2022-desksite-1667998280.jpg'/>
         </Box>
-
+ 
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} >
           POPULAR CATEGORIES
-        </Text>
+        </Text> 
         <WomensPopularcategories/>
 
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} mb={"10px"} >
@@ -35,7 +35,7 @@ export const WomensHomePage = () => {
         <WomensDiscountPeDiscount/>
         
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} >
-         BEST SELLER FOR MEN
+         BEST SELLER FOR WOMEN
         </Text>
         <BestSellerForWomen/>
 

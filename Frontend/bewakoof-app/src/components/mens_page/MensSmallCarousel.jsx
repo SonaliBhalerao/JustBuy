@@ -17,8 +17,7 @@ export const MensSmallCarousel = () => {
         "https://images.bewakoof.com/uploads/grid/app/offiicale-merch-1660921674.jpg",
         "https://images.bewakoof.com/uploads/grid/app/vote-1660921675.jpg",
         "https://images.bewakoof.com/uploads/grid/app/PC-1660921675.jpg",
-        "https://images.bewakoof.com/uploads/grid/app/offer-box-1660921674.jpg",
-        
+        "https://images.bewakoof.com/uploads/grid/app/offer-box-1660921674.jpg",  
     ]
     const text = [
       "Design of the Day",
@@ -49,26 +48,37 @@ export const MensSmallCarousel = () => {
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 9
+          items: 6
         }
       };
   return (
-    <Box margin={"auto"} w={{ base:'90%', sm: '90%', md: '70%', lg: '70%', xl:' 70%', '2xl': '70%'}}  >
+    <Box 
+      margin={"auto"} 
+        w={{ base:'90%', sm: '90%', md: '70%', lg: '70%', xl:' 70%', '2xl': '70%'}}  
+    >
         <Carousel 
             arrows={false}
-            responsive={responsive} 
-            showDots={false}
-            transitionDuration={500}
-            infinite={false}
-        >
-            
-             {
-                images.map((e,i) => {
-                   return <Box m={"0px"} key={e} >
-                        <img src={e} alt="" srcset="" />
-                        <Text textAlign={"center"} fontSize={"12px"} fontFamily={"Montserrat"} >
-                        {text[i]}
-                        </Text>
+              responsive={responsive} 
+                showDots={false}
+                  transitionDuration={500}
+                    infinite={false}
+        >   
+            { images.map((e,i) => {
+                   return <Box 
+                            m={"0px"} 
+                              key={e} 
+                          >
+                            <img 
+                              src={e} 
+                                alt="" srcset="" 
+                            />
+                            <Text 
+                              textAlign={"center"} 
+                                fontFamily={"Montserrat"}   
+                                  fontSize={{ base:'8px', sm: '10px', md: '11px', lg: '11px', xl:' 12px', '2xl': '12px'}} 
+                            >
+                              {text[i]}
+                            </Text>
                     </Box>
                 })
             } 

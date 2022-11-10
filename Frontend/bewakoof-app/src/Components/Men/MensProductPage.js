@@ -1,7 +1,7 @@
 import {Box, Stack, Image, Heading, Flex, Button, Text, Link,SimpleGrid} from "@chakra-ui/react";
 import "../Men/MensProductPage.css";
 import {
-    Accordion,
+    Accordion, 
     AccordionItem,
     AccordionButton,
     AccordionPanel,
