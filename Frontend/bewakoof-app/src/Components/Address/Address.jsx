@@ -137,41 +137,44 @@ const Address = () => {
 									</FormControl>
 								</Stack>
 
-								<Input
-									placeholder="Falt no/Building, Street name"
-									size="lg"
-									_placeholder={{
-										opacity: 1,
-										fontSize: "1rem",
-										fontWeight: "bold",
-										color: "gray.400",
-									}}
-									p={3}
-								/>
+								{/* Flat Number And Building details */}
 
-								<Input
-									placeholder="Area/Locality"
-									size="lg"
-									_placeholder={{
-										opacity: 1,
-										fontSize: "1rem",
-										fontWeight: "bold",
-										color: "gray.400",
-									}}
-									p={3}
-								/>
+								<FormControl variant="floating" id="first-name" isRequired>
+									<Input placeholder=" " size="lg" />
+									<FormLabel
+										fontSize={"1rem"}
+										fontWeight={"bold"}
+										color="gray.400"
+									>
+										Falt no/Building, Street name
+									</FormLabel>
+								</FormControl>
 
-								<Input
-									placeholder="Lankmark (Optional)"
-									size="lg"
-									_placeholder={{
-										opacity: 1,
-										fontSize: "1rem",
-										fontWeight: "bold",
-										color: "gray.400",
-									}}
-									p={3}
-								/>
+								{/* Area / Locality details */}
+
+								<FormControl variant="floating" id="first-name" isRequired>
+									<Input placeholder=" " size="lg" />
+									<FormLabel
+										fontSize={"1rem"}
+										fontWeight={"bold"}
+										color="gray.400"
+									>
+										Area/Locality
+									</FormLabel>
+								</FormControl>
+
+								{/* LandMark details */}
+
+								<FormControl variant="floating" id="first-name" isRequired>
+									<Input placeholder=" " size="lg" />
+									<FormLabel
+										fontSize={"1rem"}
+										fontWeight={"bold"}
+										color="gray.400"
+									>
+										Lankmark (Optional)
+									</FormLabel>
+								</FormControl>
 
 								<Box>
 									<Text fontSize="sm" color={"grey"}>
