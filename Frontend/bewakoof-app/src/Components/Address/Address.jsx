@@ -69,8 +69,8 @@ const Address = () => {
 
 								{/* Full name field */}
 
-								<FormControl variant="floating" id="first-name" isRequired>
-									<Input placeholder=" " size="lg" />
+								<FormControl variant="floating" isRequired>
+									<Input placeholder=" " size="lg" type="text" />
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
@@ -84,8 +84,8 @@ const Address = () => {
 
 								<InputGroup size="lg">
 									<InputLeftAddon children="+91" />
-									<FormControl variant="floating" id="first-name" isRequired>
-										<Input placeholder=" " size="lg" />
+									<FormControl variant="floating" isRequired>
+										<Input placeholder=" " size="lg" type="tel" />
 										<FormLabel
 											fontSize={"1rem"}
 											fontWeight={"bold"}
@@ -100,7 +100,7 @@ const Address = () => {
 
 								{/* Pin code field */}
 
-								<FormControl variant="floating" id="first-name" isRequired>
+								<FormControl variant="floating" isRequired>
 									<Input placeholder=" " size="lg" />
 									<FormLabel
 										fontSize={"1rem"}
@@ -114,7 +114,7 @@ const Address = () => {
 								{/* City and State field */}
 
 								<Stack direction={["column", "row"]} spacing="24px">
-									<FormControl variant="floating" id="first-name" isRequired>
+									<FormControl variant="floating" isRequired>
 										<Input placeholder=" " size="lg" />
 										<FormLabel
 											fontSize={"1rem"}
@@ -125,7 +125,7 @@ const Address = () => {
 										</FormLabel>
 									</FormControl>
 
-									<FormControl variant="floating" id="first-name" isRequired>
+									<FormControl variant="floating" isRequired>
 										<Input placeholder=" " size="lg" />
 										<FormLabel
 											fontSize={"1rem"}
@@ -139,7 +139,7 @@ const Address = () => {
 
 								{/* Flat Number And Building details */}
 
-								<FormControl variant="floating" id="first-name" isRequired>
+								<FormControl variant="floating" isRequired>
 									<Input placeholder=" " size="lg" />
 									<FormLabel
 										fontSize={"1rem"}
@@ -152,7 +152,7 @@ const Address = () => {
 
 								{/* Area / Locality details */}
 
-								<FormControl variant="floating" id="first-name" isRequired>
+								<FormControl variant="floating" isRequired>
 									<Input placeholder=" " size="lg" />
 									<FormLabel
 										fontSize={"1rem"}
@@ -165,7 +165,7 @@ const Address = () => {
 
 								{/* LandMark details */}
 
-								<FormControl variant="floating" id="first-name" isRequired>
+								<FormControl variant="floating" isRequired>
 									<Input placeholder=" " size="lg" />
 									<FormLabel
 										fontSize={"1rem"}
@@ -196,26 +196,27 @@ const Address = () => {
 						</ModalBody>
 
 						<ModalFooter margin={"auto"} mt={6} mb={10}>
-							<Button
-								colorScheme="teal"
-								mr={5}
-								px={14}
-								py={6}
-								onClick={onClose}
-								fontSize={20}
-							>
-								SAVE ADDRESS
-							</Button>
-							<Button
-								variant="outline"
-								colorScheme="teal"
-								px={10}
-								py={6}
-								_hover="none"
-								fontSize={20}
-							>
-								CANCEL
-							</Button>
+							<Stack direction={["column", "row"]} spacing="24px">
+								<Button
+									colorScheme="teal"
+									px={16}
+									py={6}
+									onClick={onClose}
+									fontSize={20}
+								>
+									SAVE ADDRESS
+								</Button>
+								<Button
+									variant="outline"
+									colorScheme="teal"
+									px={10}
+									py={6}
+									_hover="none"
+									fontSize={20}
+								>
+									CANCEL
+								</Button>
+							</Stack>
 						</ModalFooter>
 					</ModalContent>
 				</Modal>
