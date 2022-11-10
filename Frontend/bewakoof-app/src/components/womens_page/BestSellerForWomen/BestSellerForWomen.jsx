@@ -1,22 +1,22 @@
-import { Box } from '@chakra-ui/react';
-import React from 'react'
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 export const BestSellerForWomen = () => {
 
-    const images = [
-      "https://images.bewakoof.com/uploads/grid/app/WinterWear-Nov-StaticBanner-Women-Printed-1667897007.jpg",
-      "https://images.bewakoof.com/uploads/grid/app/Dapper-Typography-Sweatshirts---Hoodies-1x1-w-1667998052.jpg",
-      "https://images.bewakoof.com/uploads/grid/app/official-merch-1x1-Static-banner-1667926321.png",
-      "https://images.bewakoof.com/uploads/grid/app/very-peri-collection-1x1-w-1667926321.jpg",
-      "https://images.bewakoof.com/uploads/grid/app/WinterWear-Nov-StaticBanner-Women-Printed-1667897007.jpg",
-      "https://images.bewakoof.com/uploads/grid/app/Dapper-Typography-Sweatshirts---Hoodies-1x1-w-1667998052.jpg",
-      "https://images.bewakoof.com/uploads/grid/app/official-merch-1x1-Static-banner-1667926321.png",
-      "https://images.bewakoof.com/uploads/grid/app/very-peri-collection-1x1-w-1667926321.jpg"
-        
-    ]
+  const [data,setData] = useState([])
 
+  useEffect(() => {
+    fetch('http://localhost:4000/products/women?limit=11&page=1', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+    .then((response) => response.json())
+    .then((response) => setData(response));
+  }, [])
+  console.log(data)
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -29,33 +29,54 @@ export const BestSellerForWomen = () => {
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 5
+          items: 3
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 5
+          items: 3
         }
       };
   return (
-    <Box >
+    <Box>
         <Carousel 
             arrows={true}
             responsive={responsive} 
-            // autoPlay={true}
-            // autoPlaySpeed={3000}
             showDots={false}
             transitionDuration={500}
-            // infinite={true}
+            style={{zIndex:"0"}}
         >
-            
             {
-                images.map((e) => {
-                   return <Box m={"20px"} key={e} >
-                        <img src={e} alt="" srcset="" />
-                    </Box>
-                })
-            } 
-            
+              data.map((e) => {
+                  return <Box 
+                          m={"20px"} 
+                          key={e} 
+                          _hover={{
+                            cursor:"pointer",
+                          }} 
+                        >
+                          <Image 
+                            src={e.productImgTagsrc} 
+                            alt="" srcset="" 
+                          />
+                          <Flex gap={"10px"} >
+                            <Text 
+                              fontFamily={"Montserrat"} 
+                              fontWeight={600} 
+                              fontSize={"14px"} 
+                              >
+                                {e.loyaltyPriceBox2}
+                              </Text>
+                            <Text 
+                              textDecoration={"line-through"} 
+                              color={"gray"} 
+                              fontSize={"14px"} 
+                            >
+                              {e.actualPriceText}
+                            </Text>
+                          </Flex>
+                  </Box>
+              })
+            }    
         </Carousel>
     </Box>
   )

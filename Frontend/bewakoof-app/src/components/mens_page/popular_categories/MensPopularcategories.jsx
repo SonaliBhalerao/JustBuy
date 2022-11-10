@@ -16,8 +16,8 @@ export const MensPopularcategories = () => {
     "https://images.bewakoof.com/uploads/grid/app/category-box-new-final-MEN-Boxers-1657526325.jpg",
     "https://images.bewakoof.com/uploads/grid/app/category-box-new-shorts-1661866118.jpg",
     "https://images.bewakoof.com/uploads/grid/app/category-box-new-accessories-covers-1661866111.jpg",
-  ]
-
+  ]  
+     
   return (
     <Box display={"grid"} gridTemplateColumns={"repeat(6,1fr)"} >
       {

@@ -1,13 +1,13 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import { BestSellerForWomen } from '../../components/womens_page/BestSellerForWomen/BestSellerForWomen'
-import { ClearenceZoneWomen } from '../../components/womens_page/clearenceZoneWomen/ClearenceZoneWomen'
-import { WomensPopularcategories } from '../../components/womens_page/popular_categories/WomensPopularcategories'
-import { TheStupidCollectionWomen } from '../../components/womens_page/TheStupidCollectionWomens/TheStupidCollectionWomen'
-import { WomensCarousel } from '../../components/womens_page/WomensCarousel'
-import { WomensSmallCarousel } from '../../components/womens_page/WomensSmallCarousel'
-import { WomensDiscountPeDiscount } from '../../components/womens_page/Womens_Discount_Pe_Discount/WomensDiscountPeDiscount'
-
+import { BestSellerForWomen } from '../../Components/womens_page/BestSellerForWomen/BestSellerForWomen'
+import { ClearenceZoneWomen } from '../../Components/womens_page/clearenceZoneWomen/ClearenceZoneWomen'
+import { WomensPopularcategories } from '../../Components/womens_page/popular_categories/WomensPopularcategories'
+import { TheStupidCollectionWomen } from '../../Components/womens_page/TheStupidCollectionWomens/TheStupidCollectionWomen'
+import { WomensCarousel } from '../../Components/womens_page/WomensCarousel'
+import { WomensSmallCarousel } from '../../Components/womens_page/WomensSmallCarousel'
+import { WomensDiscountPeDiscount } from '../../Components/womens_page/Womens_Discount_Pe_Discount/WomensDiscountPeDiscount'
+ 
 export const WomensHomePage = () => {
   return (
     <Box >
@@ -23,10 +23,10 @@ export const WomensHomePage = () => {
         <Box py={"20px"} >
           <Image width={"100%"} src='https://images.bewakoof.com/uploads/grid/app/thun-strip-new-2022-desksite-1667998280.jpg'/>
         </Box>
-
+ 
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} >
           POPULAR CATEGORIES
-        </Text>
+        </Text> 
         <WomensPopularcategories/>
 
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} mb={"10px"} >
@@ -35,7 +35,7 @@ export const WomensHomePage = () => {
         <WomensDiscountPeDiscount/>
         
         <Text margin={"auto"} textAlign={"center"} fontFamily={"Montserrat"} fontWeight={500} >
-         BEST SELLER FOR MEN
+         BEST SELLER FOR WOMEN
         </Text>
         <BestSellerForWomen/>
 
