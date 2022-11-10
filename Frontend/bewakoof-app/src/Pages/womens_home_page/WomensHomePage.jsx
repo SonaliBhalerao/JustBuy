@@ -1,12 +1,12 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import { BestSellerForWomen } from '../../Components/womens_page/BestSellerForWomen/BestSellerForWomen'
-import { ClearenceZoneWomen } from '../../Components/womens_page/clearenceZoneWomen/ClearenceZoneWomen'
-import { WomensPopularcategories } from '../../Components/womens_page/popular_categories/WomensPopularcategories'
-import { TheStupidCollectionWomen } from '../../Components/womens_page/TheStupidCollectionWomens/TheStupidCollectionWomen'
-import { WomensCarousel } from '../../Components/womens_page/WomensCarousel'
-import { WomensSmallCarousel } from '../../Components/womens_page/WomensSmallCarousel'
-import { WomensDiscountPeDiscount } from '../../Components/womens_page/Womens_Discount_Pe_Discount/WomensDiscountPeDiscount'
+import { BestSellerForWomen } from '../../components/womens_page/BestSellerForWomen/BestSellerForWomen'
+import { ClearenceZoneWomen } from '../../components/womens_page/clearenceZoneWomen/ClearenceZoneWomen'
+import { WomensPopularcategories } from '../../components/womens_page/popular_categories/WomensPopularcategories'
+import { TheStupidCollectionWomen } from '../../components/womens_page/TheStupidCollectionWomens/TheStupidCollectionWomen'
+import { WomensCarousel } from '../../components/womens_page/WomensCarousel'
+import { WomensSmallCarousel } from '../../components/womens_page/WomensSmallCarousel'
+import { WomensDiscountPeDiscount } from '../../components/womens_page/Womens_Discount_Pe_Discount/WomensDiscountPeDiscount'
 
 export const WomensHomePage = () => {
   return (
