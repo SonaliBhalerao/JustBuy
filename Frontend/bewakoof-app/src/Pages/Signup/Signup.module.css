@@ -1,0 +1,7 @@
+input::placeholder {
+    font-size: 15px ;
+}
+input:focus{
+    
+    border-bottom: 1px solid black;
+}

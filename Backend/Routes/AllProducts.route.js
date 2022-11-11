@@ -1,28 +1,66 @@
 const { Router } = require("express");
-const { ProductModelMen, ProductModelWomen } = require("../Models/Products.model");
+const { ProductModelMen, ProductModelWomen, CartModel } = require("../Models/Products.model");
 
 const AllProducts=Router();
 
 // ALL PRODUCTS FOR MENS
 AllProducts.get("/men",async(req,res)=>{
-    const Mens=await ProductModelMen.find({}); 
-    console.log(Mens);
-    res.send(Mens);
-})
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice);
+    rating=Number(rating)
+    console.log(rating)
+    const Mens=await ProductModelMen.find({$or :[{},{category:category}]}).limit(limit).skip((page-1)*limit);  
+    console.log(category)
+    res.send(Mens); 
+});
+
+// SORT BY ASC BY PRICE MENS
+AllProducts.get("/men_asc",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice)
+    const Mens=await ProductModelMen.find({}).sort({finalprice: 1}); 
+    res.send(Mens); 
+});
+
+// SORT BY DSC BY PRICE MENS
+AllProducts.get("/men_dsc",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice)
+    const Mens=await ProductModelMen.find({}).sort({finalprice: -1}); 
+    res.send(Mens); 
+});
 
 // SINGLE PRODUCTS FOR MEN
 AllProducts.get("/men/:productid",async(req,res)=>{
     const payload=req.params.productid;
     const singledata=await ProductModelMen.findOne({_id:payload});
     res.send(singledata)
-})
+});
+
 
 // ALL PRODUCTS FOR WOMEN
 AllProducts.get("/women",async(req,res)=>{
-    const Womens=await ProductModelWomen.find({});
-    console.log(Womens);
-    res.send(Womens);
-})
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice)
+    const Women=await ProductModelWomen.find({$or :[{},{category:category}]}).limit(limit).skip((page-1)*limit);   
+    res.send(Women); 
+});
+
+// SORT BY ASC BY PRICE WOMEN
+AllProducts.get("/women_asc",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice)
+    const Women=await ProductModelWomen.find({}).sort({finalprice: 1}); 
+    res.send(Women); 
+});
+
+// SORT BY DSC BY PRICE WOMEN
+AllProducts.get("/women_dsc",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    finalprice = Number(finalprice)
+    const Women=await ProductModelWomen.find({}).sort({finalprice: -1}); 
+    res.send(Women); 
+});
 
 
 // SINGLE PRODUCT FOR WOMEN
@@ -32,18 +70,26 @@ AllProducts.get("/women/:productid",async(req,res)=>{
     res.send(singledata)
 })
 
+// GETTING ALL ITEMS IN CART WITH REFERENCE TO USER_ID
+AllProducts.get("/cart",async(req,res)=>{
+    const payload= "12341235"; // req.user_id;
+  const CartItems= await CartModel.find({user_id:payload});
+  console.log(CartItems);
+  res.send(CartItems);
+})
+
 // ADD A PRODUCT IN MENS COLLECTION
 AllProducts.post("/men",async(req,res)=>{
-    const {col_sm_4href,productImgTagsrc,plp,clr_shade4,wishlist_icon_animatesrc,actualPriceText,loyaltyPriceBox2,clr_shade_3}=req.body;
+    const {productImg,category,rating,description,finalprice,strickprice,tribeprice,seller}=req.body;
    const newMens= new ProductModelMen({
-    col_sm_4href:col_sm_4href,
-    productImgTagsrc:productImgTagsrc,
-    plp:plp,
-    clr_shade4:clr_shade4,
-    wishlist_icon_animatesrc:wishlist_icon_animatesrc,
-    actualPriceText:actualPriceText,
-    loyaltyPriceBox2:loyaltyPriceBox2,
-    clr_shade_3:clr_shade_3 })
+    productImg:productImg,
+    category:category,
+    rating:rating,
+    description:description,
+    finalprice: finalprice,
+    strickprice:strickprice,
+    tribeprice:tribeprice,
+    seller: seller  })
    await newMens.save();
    console.log(newMens);
    res.send("todo added successfull");
@@ -52,21 +98,44 @@ AllProducts.post("/men",async(req,res)=>{
 
 // ADD A PRODUCT IN WOMENS COLLECTION
 AllProducts.post("/women",async(req,res)=>{
-    const {col_sm_4href,productImgTagsrc,plp,clr_shade_3,clr_shade4,wishlist_icon_animate_src,discountedPriceText,actualPriceText,loyaltyPriceBox2,d_flex}=req.body;
-   const newWomen= new ProductModelWomen({
-    col_sm_4href:col_sm_4href,
-    productImgTagsrc:productImgTagsrc,
-    plp:plp,
-    clr_shade_3:clr_shade_3,
-    clr_shade4:clr_shade4,
-    wishlist_icon_animate_src:wishlist_icon_animate_src,
-    discountedPriceText:discountedPriceText,
-    actualPriceText:actualPriceText,
-    loyaltyPriceBox2:loyaltyPriceBox2,
-    d_flex:d_flex  })
+    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller}=req.body;
+    const newWomen= new ProductModelWomen({
+     productImg:productImg,
+     description:description,
+     finalprice: finalprice,
+     strickprice:strickprice,
+     tribeprice:tribeprice,
+     category:category,
+     rating:rating,
+     seller: seller })
    await newWomen.save();
    console.log(newWomen);
    res.send("todo added successfull");
+})
+
+// ADDING ITEMS TO CART WITH REFERENCE TO USER_ID
+AllProducts.post("/cart", async(req,res)=>{
+    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller,user_id}=req.body;
+    console.log(description,finalprice,user_id)
+    const AlreadyPresent= await CartModel.findOne({user_id:user_id,description:description})
+    if(AlreadyPresent){
+        res.send("Product already in the cart");
+    }
+    else{
+    const cartItem= new CartModel({
+     productImg:productImg,
+     description:description,
+     finalprice: finalprice,
+     strickprice:strickprice,
+     tribeprice:tribeprice,
+     category:category,
+     rating:rating,
+     seller: seller,
+    user_id:user_id })
+   await cartItem.save();
+   console.log(cartItem);
+   res.send("todo added successfull");
+    }
 })
 
 // DELETE A PORDUCT IN MENS COLLENTION
@@ -83,5 +152,18 @@ AllProducts.delete("/women/:productid",async(req,res)=>{
     res.send("Deleted successfully");
 })
 
+// DELETE ALL ITEMS IN CART WITH RESPECT TO USER_ID WHEN ORDER PLACED
+AllProducts.delete("/cart",async(req,res)=>{
+    const payload="12341234"; // req.user_id;
+     const mydelete=await CartModel.deleteMany({user_id:payload})
+    res.send(mydelete)
+})
 
+// DELETE SINGLE ITEMS WITH RESPECT USER_ID IF THE USRE REMOVES IT FROM CART
+AllProducts.delete("/cart/:deleteid",async(req,res)=>{
+    const payload=req.params.deleteid;
+    const payload1=12341235; //req.user_id
+     const mydelete= await CartModel.deleteMany({_id:payload,user_id:payload1});
+     res.send(mydelete);
+})
 module.exports={AllProducts};

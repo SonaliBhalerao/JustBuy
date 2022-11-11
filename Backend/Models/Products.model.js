@@ -2,14 +2,14 @@ const mongoose=require("mongoose");
 
 // SCHEMA FOR MENS DOCUMENTS
 const MenSchema= new mongoose.Schema({
-    col_sm_4href:String,
-    productImgTagsrc:String,
-    plp:String, 
-    clr_shade4:String,
-    wishlist_icon_animatesrc:String,
-    actualPriceText:String,
-    loyaltyPriceBox2:String,
-    clr_shade_3:String
+    productImg:String,
+    category:String,
+    rating:String,
+    description:String,
+    finalprice:String,
+    strickprice:String,
+    tribeprice:String,
+    seller:String
 })
 // MEN MODEL
 const ProductModelMen= mongoose.model("men",MenSchema);
@@ -17,18 +17,30 @@ const ProductModelMen= mongoose.model("men",MenSchema);
 
 // SCHEMA FOR WOMENS DOCUMENTS
 const WomenSchema=new mongoose.Schema({ 
-    col_sm_4href:String,
-    productImgTagsrc:String,
-    plp:String,
-    clr_shade_3:String,
-    clr_shade4:String,
-    wishlist_icon_animate_src:String,
-    discountedPriceText:String,
-    actualPriceText:String,
-    loyaltyPriceBox2:String,
-    d_flex:String
+    productImg:String,
+    description:String,
+    finalprice:String,
+    strickprice:String,
+    tribeprice:String,
+    category:String,
+    rating:String,
+    seller:String
 })
 // WOMEN MODEL
 const ProductModelWomen=mongoose.model("women",WomenSchema);
+
+
+const CartSchema =new mongoose.Schema({
+    productImg:String,
+    category:String,
+    rating:String,
+    description:String,
+    finalprice:String,
+    strickprice:String,
+    tribeprice:String,
+    seller:String,
+    user_id:String
+})
+const CartModel=mongoose.model("cartitem",CartSchema);
 
 module.exports={ProductModelWomen,ProductModelMen};
