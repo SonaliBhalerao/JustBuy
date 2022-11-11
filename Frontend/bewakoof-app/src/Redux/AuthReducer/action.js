@@ -2,6 +2,21 @@
 import * as types from './actionTypes'
 import axios from 'axios'
 
+export const handleProceedFunction =(data)=>(dispatch)=>{
+    dispatch({ type : types.SIGNUP_REQUEST });
+
+    axios
+    .post("http://localhost:4000/signup", data)
+    .then((res)=>{
+        console.log(res);
+        dispatch({ type : types.SIGNUP_SUCCESS, payload: res.data});
+    })
+    .catch((e) => {
+         console.log(e)
+        dispatch({ type: types.SIGNUP_FAILURE, payload: e.response.data.errors });
+    });
+}
+
 
 export const loginRequest = () => {
     return {
@@ -31,3 +46,5 @@ export const loginCheck = (payload) => (dispatch) => {
     .then((r) => dispatch(loginSuccess(r.data.token)))
 
 }
+
+
