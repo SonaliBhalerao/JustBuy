@@ -5,7 +5,7 @@ const AllProducts=Router();
 
 // ALL PRODUCTS FOR MENS
 AllProducts.get("/men",async(req,res)=>{
-    const Mens=await ProductModelMen.find({});
+    const Mens=await ProductModelMen.find({}); 
     console.log(Mens);
     res.send(Mens);
 })

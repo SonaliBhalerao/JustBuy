@@ -1,6 +1,7 @@
 const express=require("express");
 const { Connection } = require("./Config/db");
 const { AllProducts } = require("./Routes/AllProducts.route");
+const { adminController } = require("./Routes/Admin.routes");
 require("dotenv").config();
 const app=express();
 
@@ -10,8 +11,9 @@ const PORT=process.env.PORT || 8000;
 app.use(express.json());
 
 // END POINT FOR ALL PRODUCTS
-app.use("/products",AllProducts);
-
+app.use("/products",AllProducts); 
+app.use("/admin",adminController); 
+ 
 
 // LISTENIGN PORT AND CONNECTING TO DATABASE
 app.listen(PORT,async()=>{

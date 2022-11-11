@@ -4,7 +4,7 @@ const mongoose=require("mongoose");
 const MenSchema= new mongoose.Schema({
     col_sm_4href:String,
     productImgTagsrc:String,
-    plp:String,
+    plp:String, 
     clr_shade4:String,
     wishlist_icon_animatesrc:String,
     actualPriceText:String,
