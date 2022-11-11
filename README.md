@@ -3,7 +3,11 @@
 
 **Introduction**
 ---
-This is our Backend Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of MERN stack where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in backend we have learnt APIs and cloning of some of apps like Youtube, Weather Forecasting App, MovieSearch App, Google Map, Ecommerce app and ES6, debouncing technique, Authentication and Validation, Constructor Functions, Asynchronous Programming, Prototype Inheritance, , import and export calls, Promises , Road to backend by using which we need to create website clones. So the motto of this project is to create HealthKart website clone, which provides an online platform to buy nutritional products, health products, protein supplements, ayurvedic products etc at a good price with a variety of types and prices.
+This is our Backend Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of MERN stack where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in backend.
+
+This is our second Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of third unit where we need to make projects as per mastery based progression environment of Masai School. 
+
+Bewakoof is the fashion e-commerce startup that stands out from the rest. It offers a trendy collection of apparel based on dazzling and upbeat designs that resonate with the millennials. Prabhkiran Singh and Siddharth Munot launched Bewakoof in 2012.
 
 ##  Tech-stack used
   
