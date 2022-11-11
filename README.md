@@ -19,7 +19,7 @@ This is our Backend Construct Week Project at Masai School's Full Stack Web Deve
 | Adil | Home Page | NavBar
 | Sonali | Signup, Login Page  | SignUp And Login Express APIs
 | Naveed | Single Product Page | Express - Products APIs
-| S | Products Display Page | Express - Pagination and Filter
+| Sandhya | Products Display Page | Express - Pagination and Filter
 | Atul Kumar | Address Page and Cart Page | Express - Cart API
 
 ## Features
