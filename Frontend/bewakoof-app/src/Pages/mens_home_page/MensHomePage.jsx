@@ -1,12 +1,12 @@
 import { Box, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import { BestSellerForMen } from '../../Components/mens_page/BestSellerForMen/BestSellerForMen'
-import { ClearenceZoneMen } from '../../Components/mens_page/clearenceZoneMen/ClearenceZoneMen'
-import { MensCarousel } from '../../Components/mens_page/MensCarousel'
-import { MensSmallCarousel } from '../../Components/mens_page/MensSmallCarousel'
-import { MensDiscountPeDiscount } from '../../Components/mens_page/Mens_Discount_Pe_Discount/MensDiscountPeDiscount'
-import { MensPopularcategories } from '../../Components/mens_page/popular_categories/MensPopularcategories'
-import { TheStupidCollection } from '../../Components/mens_page/TheStupidCollectionMens/TheStupidCollection'
+import { BestSellerForMen } from '../../components/mens_page/BestSellerForMen/BestSellerForMen'
+import { ClearenceZoneMen } from '../../components/mens_page/clearenceZoneMen/ClearenceZoneMen'
+import { MensCarousel } from '../../components/mens_page/MensCarousel'
+import { MensSmallCarousel } from '../../components/mens_page/MensSmallCarousel'
+import { MensDiscountPeDiscount } from '../../components/mens_page/Mens_Discount_Pe_Discount/MensDiscountPeDiscount'
+import { MensPopularcategories } from '../../components/mens_page/popular_categories/MensPopularcategories'
+import { TheStupidCollection } from '../../components/mens_page/TheStupidCollectionMens/TheStupidCollection'
 
 export const MensHomePage = () => {
   return (
