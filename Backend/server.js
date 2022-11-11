@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const { Connection } = require("./Config/db");
 const { AllProducts } = require("./Routes/AllProducts.route");
+const { adminController } = require("./Routes/Admin.routes");
 const { userRouter } = require("./Routes/User.route");
 const { auth } = require('./Middleware/authMiddleware');
 require("dotenv").config();
@@ -20,8 +21,9 @@ app.use('/', userRouter);
 
 app.use(auth);
 // END POINT FOR ALL PRODUCTS
-app.use("/products",AllProducts);
-
+app.use("/products",AllProducts); 
+app.use("/admin",adminController); 
+ 
 
 // LISTENIGN PORT AND CONNECTING TO DATABASE
 app.listen(PORT,async()=>{
