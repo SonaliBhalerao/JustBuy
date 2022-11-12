@@ -7,17 +7,14 @@ const AllProducts=Router();
 // ALL PRODUCTS FOR MENS
 AllProducts.get("/men",async(req,res)=>{
     let {category, finalprice, seller, rating, page, limit} = req.query; 
-    const payload=category;
-    finalprice = Number(finalprice);
-    rating=Number(rating)
-    const Mens=await ProductModelMen.find({$or :[{},{category}]}).limit(limit).skip((page-1)*limit);  
-    console.log(Mens);
+    const Mens=await ProductModelMen.find({}).limit(limit).skip((page-1)*limit); 
+    console.log(Mens)  
     res.send(Mens); 
 });
 
 // SORT BY ASC BY PRICE MENS
 AllProducts.get("/men_asc",async(req,res)=>{
-    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    let {finalprice} = req.query; 
     finalprice = Number(finalprice)
     const Mens=await ProductModelMen.find({}).sort({finalprice: 1}); 
     res.send(Mens);
@@ -25,11 +22,27 @@ AllProducts.get("/men_asc",async(req,res)=>{
 
 // SORT BY DSC BY PRICE MENS
 AllProducts.get("/men_dsc",async(req,res)=>{
-    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    let {finalprice} = req.query; 
     finalprice = Number(finalprice)
     const Mens=await ProductModelMen.find({}).sort({finalprice: -1}); 
     res.send(Mens); 
 });
+
+// CATEGORY FILTER MEN
+AllProducts.get("/men_category",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    const Mens=await ProductModelMen.find({category:category}); 
+    res.send(Mens); 
+});
+
+// RATING FILTER
+AllProducts.get("/men_rating",async(req,res)=>{
+    let {category, finalprice, seller, rating, page, limit} = req.query; 
+    const Mens=await ProductModelMen.find({rating:rating});  
+    console.log(Mens)
+
+    res.send(Mens); 
+}); 
 
 // SINGLE PRODUCTS FOR MEN
 AllProducts.get("/men/:productid",async(req,res)=>{
@@ -39,11 +52,12 @@ AllProducts.get("/men/:productid",async(req,res)=>{
 });
 
 
+
 // ALL PRODUCTS FOR WOMEN
 AllProducts.get("/women",async(req,res)=>{
     let {category, finalprice, seller, rating, page, limit} = req.query; 
     finalprice = Number(finalprice)
-    const Women=await ProductModelWomen.find({$or :[{},{category:category}]}).limit(limit).skip((page-1)*limit);   
+    const Women=await ProductModelWomen.find({}).limit(limit).skip((page-1)*limit);   
     res.send(Women); 
 });
 
@@ -63,6 +77,13 @@ AllProducts.get("/women_dsc",async(req,res)=>{
     res.send(Women); 
 });
 
+// CATEGORY FILTER WOMEN
+AllProducts.get("/men_category",async(req,res)=>{
+    let {category} = req.query; 
+    const Women=await ProductModelWomen.find({category:category}); 
+    res.send(Women); 
+});
+
 
 // SINGLE PRODUCT FOR WOMEN
 AllProducts.get("/women/:productid",async(req,res)=>{
@@ -73,7 +94,7 @@ AllProducts.get("/women/:productid",async(req,res)=>{
 
 // GETTING ALL ITEMS IN CART WITH REFERENCE TO USER_ID
 AllProducts.get("/cart",auth,async(req,res)=>{
-    const payload= req.body.user
+  const payload= req.body.user
   const CartItems= await CartModel.find({user_id:payload});
   console.log(CartItems);
   res.send(CartItems);
@@ -93,7 +114,7 @@ AllProducts.post("/men",async(req,res)=>{
     seller: seller  })
    await newMens.save();
    console.log(newMens);
-   res.send("Mens Product Added Successfull");
+   res.send("Product added successfull");
 })
 
 
@@ -111,7 +132,7 @@ AllProducts.post("/women",async(req,res)=>{
      seller: seller })
    await newWomen.save();
    console.log(newWomen);
-   res.send("Womens Product Added Successfull");
+   res.send("Product added successfull");
 })
 
 // ADDING ITEMS TO CART WITH REFERENCE TO USER_ID
@@ -132,6 +153,7 @@ AllProducts.post("/cart", auth,  async(req,res)=>{
      category:category,
      rating:rating,
      seller: seller,
+
     user_id:user})
    await newCartItem.save();
    console.log(newCartItem);

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MensProductPage from '../Components/Men/MensProductPage'
+
 import WomensProductPage from '../Components/Women/WomenProductPage'
 import { MensHomePage } from './mens_home_page/MensHomePage'
 import { Signup } from './Signup/Signup'
@@ -14,6 +15,8 @@ export const MainRoutes = () => {
         <Routes>
             <Route path={"/mens-home"} element={<MensHomePage/>} />
             <Route path={"/womens-home"} element={<WomensHomePage/>} />
+
+
             <Route path={"/mens-home/:name"} element={<MensSinglePage/>} />
             <Route path={"/womens-home/:name"} element= {<WomensSinglePage/>}/>
             <Route path={"/men"} element={<MensProductPage/>} />

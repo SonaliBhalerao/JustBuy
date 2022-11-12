@@ -19,6 +19,7 @@ app.use(express.json());
 //User Signup and Login
 app.use('/', userRouter);
 
+// app.use(auth);
 // END POINT FOR ALL PRODUCTS
 app.use("/products",AllProducts); 
 app.use("/admin",adminController); 
