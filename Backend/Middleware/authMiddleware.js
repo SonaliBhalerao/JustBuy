@@ -54,7 +54,7 @@ const checkUser = async(req, res, next) =>{
     const {name, contact, email, passeord} = req.body;
     const user= await UserModel.findOne({"email":email});
     if(user){
-        res.send('User already exist!');
+        res.send('User Already Exist!');
     }
     else{
         next();
