@@ -19,8 +19,10 @@ const auth = (req,res,next)=>{
             try{
 
                 var decoded = jwt.verify(token, SECRET);
+                console.log("decoded", decoded._id);
                 if(decoded){
-                    req.user = decoded.data;
+                    console.log("user = id added");
+                    req.body.user = decoded._id;
                     next();
                 }else{
                     return res.status(401).send({
@@ -52,7 +54,7 @@ const checkUser = async(req, res, next) =>{
     const {name, contact, email, passeord} = req.body;
     const user= await UserModel.findOne({"email":email});
     if(user){
-        res.send('User already exist!');
+        res.send('User Already Exist!');
     }
     else{
         next();

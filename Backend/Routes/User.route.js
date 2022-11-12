@@ -17,8 +17,8 @@ userRouter.post("/signup", checkUser,  async(req, res)=>{
         }
         const user = new UserModel({name, contact, email, password:hash});
         user.save();
-        console.log("signup successful")
-        return res.send("sign up successful");
+        console.log("Signup Successful!")
+        return res.send("Signup Successful!");
     });
 });
 
