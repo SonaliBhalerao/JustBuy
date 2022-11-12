@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { auth } = require("../Middleware/authMiddleware");
 const { ProductModelMen, ProductModelWomen, CartModel } = require("../Models/Products.model");
 
 const AllProducts=Router();
@@ -6,11 +7,11 @@ const AllProducts=Router();
 // ALL PRODUCTS FOR MENS
 AllProducts.get("/men",async(req,res)=>{
     let {category, finalprice, seller, rating, page, limit} = req.query; 
+    const payload=category;
     finalprice = Number(finalprice);
     rating=Number(rating)
-    console.log(rating)
-    const Mens=await ProductModelMen.find({$or :[{},{category:category}]}).limit(limit).skip((page-1)*limit);  
-    console.log(category)
+    const Mens=await ProductModelMen.find({$or :[{},{category}]}).limit(limit).skip((page-1)*limit);  
+    console.log(Mens);
     res.send(Mens); 
 });
 
@@ -19,7 +20,7 @@ AllProducts.get("/men_asc",async(req,res)=>{
     let {category, finalprice, seller, rating, page, limit} = req.query; 
     finalprice = Number(finalprice)
     const Mens=await ProductModelMen.find({}).sort({finalprice: 1}); 
-    res.send(Mens); 
+    res.send(Mens);
 });
 
 // SORT BY DSC BY PRICE MENS
@@ -71,8 +72,8 @@ AllProducts.get("/women/:productid",async(req,res)=>{
 })
 
 // GETTING ALL ITEMS IN CART WITH REFERENCE TO USER_ID
-AllProducts.get("/cart",async(req,res)=>{
-    const payload= "12341235"; // req.user_id;
+AllProducts.get("/cart",auth,async(req,res)=>{
+    const payload= req.body.user
   const CartItems= await CartModel.find({user_id:payload});
   console.log(CartItems);
   res.send(CartItems);
@@ -92,7 +93,7 @@ AllProducts.post("/men",async(req,res)=>{
     seller: seller  })
    await newMens.save();
    console.log(newMens);
-   res.send("todo added successfull");
+   res.send("Mens Product Added Successfull");
 })
 
 
@@ -110,19 +111,19 @@ AllProducts.post("/women",async(req,res)=>{
      seller: seller })
    await newWomen.save();
    console.log(newWomen);
-   res.send("todo added successfull");
+   res.send("Womens Product Added Successfull");
 })
 
 // ADDING ITEMS TO CART WITH REFERENCE TO USER_ID
-AllProducts.post("/cart", async(req,res)=>{
-    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller,user_id}=req.body;
-    console.log(description,finalprice,user_id)
-    const AlreadyPresent= await CartModel.findOne({user_id:user_id,description:description})
-    if(AlreadyPresent){
-        res.send("Product already in the cart");
+AllProducts.post("/cart", auth,  async(req,res)=>{
+    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller,user}=req.body;
+    console.log(description,finalprice,user)
+    const AlreadyPresent= await CartModel.find({user_id:user,description:description})
+    if(AlreadyPresent.length>0){
+        res.send("Product Already In The Cart");
     }
     else{
-    const cartItem= new CartModel({
+    const newCartItem=new CartModel({
      productImg:productImg,
      description:description,
      finalprice: finalprice,
@@ -131,10 +132,10 @@ AllProducts.post("/cart", async(req,res)=>{
      category:category,
      rating:rating,
      seller: seller,
-    user_id:user_id })
-   await cartItem.save();
-   console.log(cartItem);
-   res.send("todo added successfull");
+    user_id:user})
+   await newCartItem.save();
+   console.log(newCartItem);
+   res.send("Added To Bag Successfully");
     }
 })
 
@@ -142,27 +143,27 @@ AllProducts.post("/cart", async(req,res)=>{
 AllProducts.delete("/men/:productid",async(req,res)=>{
     const payload=req.params.productid;
     await ProductModelMen.deleteMany({_id:payload});
-    res.send("Deleted successfully");
+    res.send("Deleted Successfully");
 })
 
 // DELETE A PRODUCT IN WOMENS COLLECTION
 AllProducts.delete("/women/:productid",async(req,res)=>{
     const payload=req.params.productid;
     await ProductModelWomen.deleteMany({_id:payload});
-    res.send("Deleted successfully");
+    res.send("Deleted Successfully");
 })
 
 // DELETE ALL ITEMS IN CART WITH RESPECT TO USER_ID WHEN ORDER PLACED
-AllProducts.delete("/cart",async(req,res)=>{
-    const payload="12341234"; // req.user_id;
+AllProducts.delete("/cart",auth,async(req,res)=>{
+    const payload =req.body.user;
      const mydelete=await CartModel.deleteMany({user_id:payload})
     res.send(mydelete)
 })
 
 // DELETE SINGLE ITEMS WITH RESPECT USER_ID IF THE USRE REMOVES IT FROM CART
-AllProducts.delete("/cart/:deleteid",async(req,res)=>{
+AllProducts.delete("/cart/:deleteid",auth,async(req,res)=>{
     const payload=req.params.deleteid;
-    const payload1=12341235; //req.user_id
+    const payload1= req.body.user;
      const mydelete= await CartModel.deleteMany({_id:payload,user_id:payload1});
      res.send(mydelete);
 })

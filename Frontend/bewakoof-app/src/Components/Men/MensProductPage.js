@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 const MensProductPage = () =>{
 
     const [data, setData] = useState([]);
-
+    
     useEffect(()=>{
         getData()
         .then((res)=>{
