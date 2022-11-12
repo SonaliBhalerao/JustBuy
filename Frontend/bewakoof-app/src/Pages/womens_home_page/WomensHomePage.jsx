@@ -11,7 +11,6 @@ import { WomensDiscountPeDiscount } from '../../Components/womens_page/Womens_Di
 export const WomensHomePage = () => {
   return (
     <Box >
-
         <WomensCarousel/>
 
         <Box py={"20px"} >
