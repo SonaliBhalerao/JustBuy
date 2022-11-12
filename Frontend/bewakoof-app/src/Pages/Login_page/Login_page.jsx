@@ -1,10 +1,10 @@
 import { Container } from "@chakra-ui/react";
-import LoginComponent from "../../components/Login/loginComponent";
+import LoginComponent from "../../Components/Login/loginComponent";
 
-export default function LoginPage(){
-    return(
-        <Container>
-            <LoginComponent/>
-        </Container>
-    )
+export default function LoginPage() {
+	return (
+		<Container>
+			<LoginComponent />
+		</Container>
+	);
 }
