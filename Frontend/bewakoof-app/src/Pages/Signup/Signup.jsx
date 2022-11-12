@@ -16,6 +16,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import styles from './Signup.module.css'
 import { useNavigate } from "react-router-dom";
 
+
 import axios from 'axios';
 
 export const Signup = () => {
@@ -26,7 +27,7 @@ export const Signup = () => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const successfullyCreated = useSelector(
     (data) => data.AuthReducer.successfullyCreated
@@ -44,7 +45,7 @@ export const Signup = () => {
           })
           .then(function (response) {
             console.log(response.data)
-            if(response.data==="User already exist!") {
+            if(response.data==="User Already Exist!") {
               toast({
                 position: 'top',
                 marginTop: '150px',
@@ -53,9 +54,9 @@ export const Signup = () => {
                 duration: 3000,
                 isClosable: true,
             })
-           // navigate("/login");
+            navigate("/login");
             }
-            else if(response.data === "sign up successful") {
+            else if(response.data === "Signup Successful!") {
               toast({
                 position: 'top',
                 marginTop: '150px',
@@ -64,7 +65,7 @@ export const Signup = () => {
                 duration: 3000,
                 isClosable: true,
             })
-            // navigate("/login");
+             navigate("/login");
             }
           })  
           .catch(function (error) {
@@ -153,8 +154,11 @@ export const Signup = () => {
 
                         <Box align={'center'} w='100%' >
                             <Button w='100%' h={{sm:'48px', md:'48px', lg:"60px"}} fontSize={['16px', '16px', '20px']}
-                            onClick={handleSignUp}>
-                            PROCEED</Button>
+                                colorScheme='teal'
+                                onClick={handleSignUp}
+                            >
+                                PROCEED
+                            </Button>
                         </Box>
                     </Grid>
                 </Box>   

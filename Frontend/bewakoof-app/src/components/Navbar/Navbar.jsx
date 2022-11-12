@@ -305,7 +305,7 @@ return (
                         <i style={{fontSize:"20px",color:"rgb(137,149,168)"}} class="fa-sharp fa-solid fa-bag-shopping"></i>
                     </Box>
                     <Box width={"20%"} >
-                        <img  src="https://media.istockphoto.com/id/519611160/vector/flag-of-india.jpg?b=1&s=612x612&w=0&k=20&c=jLnf3N5XtJB3YBvoj9zEGcZ8RwFRrspSMf009nCnGfk=" alt="" srcset="" />
+                        <img src="https://media.istockphoto.com/id/519611160/vector/flag-of-india.jpg?b=1&s=612x612&w=0&k=20&c=jLnf3N5XtJB3YBvoj9zEGcZ8RwFRrspSMf009nCnGfk=" alt="" srcset="" />
                     </Box>
                     
                 </Flex>
