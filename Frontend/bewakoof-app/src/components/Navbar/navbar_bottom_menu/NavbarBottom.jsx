@@ -9,7 +9,9 @@ export const NavbarBottom = () => {
         p={"4px"}
         boxSizing={"border-box"}
         position={"sticky"}
-        top={'54px'} zIndex={"999"}
+        top={{base:'48px', sm:'48px', md:'48px', lg:'54px', xl:'54px','2xl': '54px'}} 
+        // h={{base:'40px', sm:'40px', md:'40px', lg:'60px', xl:'60px','2xl': '60px'}} 
+        zIndex={"999"}
         fontFamily={"Montserrat"} 
         fontSize={{ base:'10px', sm: '12px', md: '14px', lg: '14px', xl:' 14px', '2xl': '14px'}}  
         fontWeight={400}

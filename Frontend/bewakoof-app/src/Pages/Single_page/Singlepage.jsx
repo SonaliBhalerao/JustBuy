@@ -1,6 +1,6 @@
+import SingleProductImg from "../../Components/Single_Product/ProductImg"
+import SingleProductDetial from "../../Components/Single_Product/ProductsDetails"
 import { Container, Flex } from "@chakra-ui/react";
-import SingleProductImg from "../../Components/Single_Product/ProductImg";
-import SingleProductDetial from "../../Components/Single_Product/ProductsDetails";
 
 export const SinglePage = () => {
 	return (

@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, CircularProgress, Flex, Image, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,7 +8,7 @@ export const BestSellerForWomen = () => {
   const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/women?limit=11&page=1', {
+    fetch('http://localhost:4000/products/women', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
@@ -16,28 +16,33 @@ export const BestSellerForWomen = () => {
     .then((response) => response.json())
     .then((response) => setData(response));
   }, [])
-  console.log(data)
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 5
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 3
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 3
-        }
-      };
+ 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+      slidesToSlide: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      slidesToSlide: 5
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+      slidesToSlide: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 3,
+      slidesToSlide: 3
+    }
+  };
   return (
-    <Box>
+    <Box minHeight={"300px"}  >
+       { data.length>0 ?
         <Carousel 
             arrows={true}
             responsive={responsive} 
@@ -55,7 +60,7 @@ export const BestSellerForWomen = () => {
                           }} 
                         >
                           <Image 
-                            src={e.productImgTagsrc} 
+                            src={e.productImg} 
                             alt="" srcset="" 
                           />
                           <Flex gap={"10px"} >
@@ -64,20 +69,27 @@ export const BestSellerForWomen = () => {
                               fontWeight={600} 
                               fontSize={"14px"} 
                               >
-                                {e.loyaltyPriceBox2}
+                                {e.tribeprice}
                               </Text>
                             <Text 
                               textDecoration={"line-through"} 
                               color={"gray"} 
                               fontSize={"14px"} 
                             >
-                              {e.actualPriceText}
+                              {e.strickprice}
                             </Text>
                           </Flex>
                   </Box>
-              })
+              }) 
             }    
         </Carousel>
+      : 
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} minHeight={"300px"} >
+        <Box >
+          <CircularProgress isIndeterminate color='rgb(253,216,53)' />
+        </Box>  
+      </Box>
+      }
     </Box>
   )
 }

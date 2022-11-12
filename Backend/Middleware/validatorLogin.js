@@ -1,9 +1,9 @@
-const {UserModel} = require("../model/User.model")
+const {AdminModel} = require("../Models/Admin.model")
 
 const validatorLogin = (req,res,next) => {
 console.log(req.body.email 
     )
-    UserModel.findOne({ email: req.body.email }, function(err, user) {
+    AdminModel.findOne({ email: req.body.email }, function(err, user) {
         if(err) {
            //handle error here
 

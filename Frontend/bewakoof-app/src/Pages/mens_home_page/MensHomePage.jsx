@@ -8,6 +8,7 @@ import { MensDiscountPeDiscount } from "../../Components/mens_page/Mens_Discount
 import { MensPopularcategories } from "../../Components/mens_page/popular_categories/MensPopularcategories";
 import { TheStupidCollection } from "../../Components/mens_page/TheStupidCollectionMens/TheStupidCollection";
 
+
 export const MensHomePage = () => {
 	returnC(
 		<Box>

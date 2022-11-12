@@ -2,7 +2,7 @@
 import { Box, Flex,  useDisclosure, Spacer,Button,  HStack, InputGroup, InputLeftElement, Input,Drawer,DrawerBody,
     DrawerHeader,DrawerOverlay,DrawerContent,DrawerCloseButton, Heading,  VStack,
     Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css'
 import { MensDropDown } from './mensdropdown/MensDropDown';
 import { WomensDropDown } from './womensdropdown/WomensDropDown';
@@ -10,10 +10,11 @@ import {Link} from "react-router-dom"
 import SmileIcon from '../Icons/SmileIcon';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
+import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
 
 
 export const Navbar = () => {
-
+    
     const { isOpen, onOpen,onClose } = useDisclosure();
 return (
     <Box 
@@ -32,7 +33,8 @@ return (
             alignItems={"center"}
             h={{ 
                 base: '40px', sm:'40px', md:'40px', lg:'60px', xl:'60px','2xl': '60px'
-            }} border={"1px solid black"}
+            }} 
+            // border={"1px solid black"}
         >
             <>
                 <Button  
@@ -61,16 +63,16 @@ return (
                                     <Heading fontFamily={"Montserrat"} fontSize="12px" color={"rgba(0, 0, 0, 0.3)"} fontWeight={600} mb={"4px"} >
                                         SHOP IN
                                     </Heading>
-                                    <Link mb={"10px"} >
+                                    <Link to={"/men"} mb={"10px"} >
                                         Men
                                     </Link>
-                                    <Link mb={"10px"} >
+                                    <Link mb={"10px"} to={"/women"} >
                                         Women
                                     </Link>
-                                    <Link mb={"10px"} >
+                                    <Link mb={"10px"} to={"/men"} >
                                         Design of the Day   
                                     </Link>
-                                    <Link mb={"10px"} >
+                                    <Link mb={"10px"} to={"/women"} >
                                         Mobile Covers
                                     </Link>
                                 </VStack>
@@ -156,7 +158,9 @@ return (
                 margin={"auto"} 
                 // border={"1px solid red"}
             >
-                <SmileIcon w={"24px"} c={"black"}/>
+                
+                    <img width={"8%"} src="https://i.imgur.com/J7Bdko1.png" alt="" srcset="" />
+
                 <DesktopNav />
             </Flex>  
         </Box>
@@ -272,20 +276,19 @@ return (
                 pointerEvents='none'
                 children={<FaSistrix color='gray.500' />}
                 />
-                <Input type='search' placeholder='Search by Product, Categor or Collection' />
+                <Input type='text' placeholder='Search by Product, Categor or Collection' />
             </InputGroup>
 
                     <Spacer/>
                 
                 <Flex 
-                    w={"30%"} 
-                    // border={"1px solid black"}  
+                    w={"30%"}  
                     justifyContent={"space-between"} 
                     alignItems={"center"}
                 >
-                    <Menu  >
-                        <MenuButton as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
-                            <i style={{fontSize:"20px",color:"rgb(137,149,168)"}} class="fa-regular fa-user"></i>
+                    <Menu >
+                        <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
+                            <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
                         </MenuButton>
                         <MenuList>
                             <MenuItem>Account</MenuItem>
@@ -295,22 +298,35 @@ return (
                             <MenuItem>Logout</MenuItem>
                         </MenuList>
                     </Menu>
-                    <Box>
-                        
-                    </Box>
-                    <Box>
-                        <i style={{fontSize:"20px",color:"rgb(137,149,168)"}} class="fa-regular fa-heart"></i>
-                    </Box>
-                    <Box>
-                        <i style={{fontSize:"20px",color:"rgb(137,149,168)"}} class="fa-sharp fa-solid fa-bag-shopping"></i>
-                    </Box>
-                    <Box width={"20%"} >
-                        <img src="https://media.istockphoto.com/id/519611160/vector/flag-of-india.jpg?b=1&s=612x612&w=0&k=20&c=jLnf3N5XtJB3YBvoj9zEGcZ8RwFRrspSMf009nCnGfk=" alt="" srcset="" />
-                    </Box>
-                    
-                </Flex>
 
-                   
+                    <Button 
+                        as={Button} 
+                        bg={"white"}
+                        _hover={{bg:"white",cursor:"pointer"}} 
+                        colorScheme={"white"} 
+                        p={"10px"} m={"0px"} 
+                        onClick={ () => {
+                            
+                        }}
+                    >
+                        <BsHeart color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"} />
+                    </Button>
+
+                    <Button 
+                        bg={"white"} 
+                        as={Button} 
+                        _hover={{bg:"white",cursor:"pointer"}} 
+                        colorScheme={"white"} 
+                        p={"10px"} 
+                        m={"0px"} 
+                        onClick={ () => {
+                            
+                        }}
+                    >
+                        <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  />
+                    </Button>
+
+                </Flex>                   
             </Flex>
 
         </HStack>
