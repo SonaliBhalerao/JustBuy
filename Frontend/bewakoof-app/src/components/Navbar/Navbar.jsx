@@ -63,7 +63,7 @@ return (
                                     <Heading fontFamily={"Montserrat"} fontSize="12px" color={"rgba(0, 0, 0, 0.3)"} fontWeight={600} mb={"4px"} >
                                         SHOP IN
                                     </Heading>
-                                    <Link to={"/men"} mb={"10px"} >
+                                    <Link border={"1px solid black"} to={"/men"} mb={"10px"} >
                                         Men
                                     </Link>
                                     <Link mb={"10px"} to={"/women"} >
@@ -201,11 +201,13 @@ return (
                         <Box 
                             className="dropdown"
                         >
-                            <Box 
-                                className="dropbtn"
-                            >
-                                Men 
-                            </Box>
+                            <Link to="/men" >
+                                <Box 
+                                    className="dropbtn"
+                                >
+                                    Men 
+                                </Box>
+                            </Link>
                             <Box 
                                 className="dropdown-content" 
                                     marginLeft={{ base:'14px', sm: '14px', md: '14px', lg: '-25px', xl:' -25x', '2xl': '-25px'}}
@@ -229,7 +231,9 @@ return (
                             display='flex' justifyContent='center' alignItems='center'
                 >
                         <Box className="dropdown">
+                        <Link to="/wo   men" >
                             <Box className="dropbtn"> Women </Box>
+                        </Link>
                             <Box 
                                 className="dropdown-content" 
                                 marginLeft={{ base:'14px', lg: '-146px', xl:'-109px', '2xl': '-118px'}} 

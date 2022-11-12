@@ -10,7 +10,7 @@ import { TheStupidCollection } from "../../Components/mens_page/TheStupidCollect
 
 
 export const MensHomePage = () => {
-	returnC(
+	return(
 		<Box>
 			<MensCarousel />
 
