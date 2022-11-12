@@ -3,19 +3,25 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { AdminEditWomensButton } from './AdminEditWomensButton';
+// import { AdminEditButton } from './AdminEditButton';
 
-export const BestSellerForMen = () => {
+export const AdminWomensSection = () => {
 
 const [data,setData] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:4000/products/men', {
+    const getData = ()=> {
+        fetch('http://localhost:4000/products/women', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
       }})
     .then((response) => response.json())
     .then((response) => setData(response));
+    }
+
+  useEffect(() => {
+    getData()
   }, [])
 
     const responsive = {
@@ -50,6 +56,7 @@ const [data,setData] = useState([])
             showDots={false}
             transitionDuration={500}
             style={{zIndex:"0"}}
+            draggable={false}
         >
             {
               data.map((e) => {
@@ -57,29 +64,28 @@ const [data,setData] = useState([])
                           m={"20px"} 
                           key={e} 
                           _hover={{
-                            cursor:"pointer",
+                            // cursor:"pointer",
                           }} 
                         >
                           <Image 
                             src={e.productImg} 
                             alt="" srcset="" 
                           />
-                          <Flex gap={"10px"} >
-                            <Text 
-                              fontFamily={"Montserrat"} 
-                              fontWeight={600} 
-                              fontSize={"14px"} 
-                              >
-                                {e.tribeprice}
-                              </Text>
-                            <Text 
-                              textDecoration={"line-through"} 
-                              color={"gray"} 
-                              fontSize={"14px"} 
-                            >
-                              {e.strickprice}
-                            </Text>
-                          </Flex>
+                          <Box >
+                            <Box fontFamily={"Montserrat"} fontSize={"14px"} >
+                                <Text>{`Category : ${e.category}`}  </Text>
+                                <Text>{`rating : ${e.rating}`}</Text>
+                                <Text>{`Description : ${e.description}`}</Text>
+                                <Text>{`Final Price : ${e.finalprice}`}</Text>
+                                <Text>{`Strick price : ${e.strickprice}`}</Text>
+                                <Text>{`Tribe proce : ${e.tribeprice}`} </Text>
+                                <Text>{`Seller : ${e.seller}`}</Text>                    
+                            </Box>
+                            <Box p={"10px"} >
+                                <AdminEditWomensButton element={e} id={e._id} getData={getData} />
+                            </Box>
+                        
+                          </Box>
                   </Box>
               }) 
             }    
@@ -94,3 +100,5 @@ const [data,setData] = useState([])
     </Box>
   )
 }
+
+
