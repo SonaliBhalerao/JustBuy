@@ -1,47 +1,79 @@
 import {Box, Stack, Image, Heading, Flex, Button, Text, Link,SimpleGrid, Container} from "@chakra-ui/react";
 import "../Men/MensProductPage.css";
 import {
-    Accordion,
+    Accordion, 
     AccordionItem,
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
   } from '@chakra-ui/react'
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { gettingWomenData, getWomenDataFailure, getWomenDataRequest, getWomenDataSuccess } from "../../Redux/AppReducer/action";
-import { categoryData, rating, sortBy, neck, sleeve, fit, design, color, brand, size, discount } from "../Men/AccordianItems";
+import { getMenDataFailure, getMenDataRequest, getMenDataSuccess, gettingMenData} from "../../Redux/AppReducer/action";
+import { categoryData, rating, sortBy, neck, sleeve, fit, design, color, brand, size, discount } from "./AccordianItems";
+import {useSearchParams } from "react-router-dom";
 
+// main function MensProductPage
+const MensProductPage = () =>{
 
-const WomensProductPage = () =>{
-    const dispatch = useDispatch();
-        
-       // store
-    const {getWomenData, isLoading, isError} = useSelector((store) =>{
+      const dispatch = useDispatch(); 
+      const [searchParams, setSearchParams] = useSearchParams();
+      const initialGenreParams = searchParams.getAll("category");
+    //   const initialSortParams = searchParams.get("sortBy");
+      const [category, setCategory] = useState(initialGenreParams || []);
+    
+    // store
+    const {getMenData, isLoading, isError} = useSelector((store) =>{
         return {
-            getWomenData:store.AppReducer.getWomenData,
+            getMenData:store.AppReducer.getMenData,
             isLoading: store.AppReducer.isLoading,
             isError: store.AppReducer.isError
         }
       }
     )
 
-    // handleMenData function
-    const handleWomenData = () => {
-        dispatch(getWomenDataRequest())
-        gettingWomenData() 
-        .then((res)=> {
-            console.log("response",res.data)
-            dispatch(getWomenDataSuccess(res.data))
-        })
-        .catch((e)=> dispatch(getWomenDataFailure(e)))
+    const handleCategory = (e, el) => {
+        const option = el;
+        console.log(option)
+        console.log(initialGenreParams)
+
+        let newCategory = [...category]
+        if (category.includes(option )) {
+            newCategory.splice(newCategory.indexOf(option),1)
+        }
+        else {
+            newCategory = []
+            newCategory.push(option)
+        }
+        setCategory(newCategory)
     }
 
+
+    useEffect(() => {
+      if (category) {
+        console.log(category.length)
+        const params = {}
+        category && (params.category = category)
+        setSearchParams(params);
+      }
+    },[category,setSearchParams])
+    
+
+// handleMenData function
+    const handleMenData = () => {
+        dispatch(getMenDataRequest())
+        gettingMenData()
+        .then((res)=> {
+            dispatch(getMenDataSuccess(res.data))
+        })
+        .catch((e)=> dispatch(getMenDataFailure(e)))
+    } 
+
+//  useEffect
     useEffect(()=>{
-        handleWomenData()
+         handleMenData()
     },[])
 
-    console.log("final", getWomenData );
 
     return (
         // main box
@@ -50,22 +82,21 @@ const WomensProductPage = () =>{
                 <Box >
                   <Image height={["150px", "200px", "250px"]} width={["100%"]} display={{ sm:"block",base:"none"}} alignItems src="https://images.bewakoof.com/uploads/category/desktop/INSIDE-BANNER_DESKTOP_FREEBIE-1667998388.jpg"></Image>
                 </Box>
-                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide'>Women Clothing (50)</Text>
+                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide' w={"220px"} borderBottom={"2px solid rgb(253,216,53)"} >Men Clothing {getMenData.length}</Text>
 
                 {/* products and filter flex */}
                 <Flex direction={{base:"column", lg:"row", md:"row"}} mt={10} mb={6} gap={2}>
 
                     {/* left box */}
-                    <Box width={"30%"} p={5} display={{ sm:"block",base:"none"}} mt={-6}>
-                        <Flex gap={"50%"}  height={"20px"} flexDirection={"row"} mb={5}>
+                    <Box width={"35%"} p={5} display={{ sm:"block",base:"none"}} mt={-6} >
+                        <Flex gap={"40%"}  height={"20px"} flexDirection={"row"} >
                             <Text fontSize={"13px"} color={"#969696"} textAlign="left" ml="16px" fontWeight="bold">FILTERS</Text>
                             <Text fontSize={"13px"} color={"#73A2A2"} ml="16px" fontWeight="semibold" ><a>Clear All</a></Text>  
                         </Flex>
 
                         <Accordion defaultIndex={[0]} allowMultiple>
                             {/* category */}
-                             {/* category */}
-                             <AccordionItem>
+                            <AccordionItem>
                                 <h2>
                                 <AccordionButton>
                                     <Box flex='1' textAlign='left' p={"5px"} fontSize={"15px"} color="#414141" fontWeight="medium">Category</Box>
@@ -73,7 +104,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {categoryData.map((el)=> {
-                                    return <AccordionPanel onClick={(e)=> handleCategory(e) } pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel value={el} onClick={(e)=> handleCategory(e, el) } pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -226,7 +257,7 @@ const WomensProductPage = () =>{
                     {/* right box */}
                     <Box >
                         <SimpleGrid columns={[1, 2, 2, 3]} spacing={5} height={"670px"} direction={{base:"column", lg:"row"}} overflow={"scroll"} >
-                                {getWomenData.map((e)=>{
+                                {getMenData.map((e)=>{
                                     return (
                                         <Box className="mapBox" p={1}>
                                             <Image src={e.productImg} h={"350px"} w={"100%"}></Image>
@@ -246,8 +277,8 @@ const WomensProductPage = () =>{
                 </Flex>
             </Box>
 
-        </Box> 
+        </Box>
     )
 }
 
-export default WomensProductPage
+export default MensProductPage

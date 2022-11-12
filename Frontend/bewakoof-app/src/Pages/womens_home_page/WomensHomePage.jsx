@@ -12,19 +12,23 @@ export const WomensHomePage = () => {
 	return (
 		<Box>
 			<WomensCarousel />
+
 			<Box py={"20px"}>
 				<Image
 					width={"100%"}
 					src="https://images.bewakoof.com/uploads/grid/app/desktop-tod-strip-women-1654149139.jpg"
 				/>
 			</Box>
-			<WomensSmallCarousel />C
+
+			<WomensSmallCarousel />
+
 			<Box py={"20px"}>
 				<Image
 					width={"100%"}
 					src="https://images.bewakoof.com/uploads/grid/app/thun-strip-new-2022-desksite-1667998280.jpg"
 				/>
 			</Box>
+
 			<Text
 				margin={"auto"}
 				textAlign={"center"}
@@ -34,6 +38,7 @@ export const WomensHomePage = () => {
 				POPULAR CATEGORIES
 			</Text>
 			<WomensPopularcategories />
+
 			<Text
 				margin={"auto"}
 				textAlign={"center"}
@@ -44,6 +49,7 @@ export const WomensHomePage = () => {
 				DISCOUNT PE DISCOUNT
 			</Text>
 			<WomensDiscountPeDiscount />
+
 			<Text
 				margin={"auto"}
 				textAlign={"center"}
@@ -53,6 +59,7 @@ export const WomensHomePage = () => {
 				BEST SELLER FOR WOMEN
 			</Text>
 			<BestSellerForWomen />
+
 			<Box display={"flex"} gap={"20px"} py={"20px"}>
 				<Box>
 					<img
@@ -76,6 +83,7 @@ export const WomensHomePage = () => {
 					/>
 				</Box>
 			</Box>
+
 			<Text
 				margin={"auto"}
 				textAlign={"center"}
@@ -85,6 +93,7 @@ export const WomensHomePage = () => {
 				CLEARANCE ZONE
 			</Text>
 			<ClearenceZoneWomen />
+
 			<Text
 				margin={"auto"}
 				textAlign={"center"}
@@ -95,12 +104,14 @@ export const WomensHomePage = () => {
 				THE STOOPID COLLECTION
 			</Text>
 			<TheStupidCollectionWomen />
+
 			<Box py={"10px"}>
 				<Image
 					width={"100%"}
 					src="https://images.bewakoof.com/uploads/grid/app/desktop---strip-1440---x-150---tribe-1634552003.png"
 				/>
 			</Box>
+
 			<Box py={"10px"}>
 				<Image
 					width={"100%"}

@@ -21,7 +21,7 @@ userRouter.post("/signup", checkUser,  async(req, res)=>{
         return res.send("sign up successful");
     });
 });
-
+ 
 //.......... Login ............
 userRouter.post("/login", async(req, res)=>{
     const {email, password} = req.body;
