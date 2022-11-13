@@ -1,4 +1,5 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+
 import {Flex, Box, FormControl, FormLabel, Input, Checkbox, Stack, Button, Heading, Text, useColorModeValue, 
 InputRightElement, InputGroup, useToast } from '@chakra-ui/react';
 import axios from 'axios';
@@ -94,7 +95,7 @@ export function AdminLogin() {
                     onClick={() =>
                       setShowPassword((showPassword) => !showPassword)
                     }>
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    {showPassword ? <AiFillEye fontSize={"40px"} /> : <AiFillEyeInvisible fontSize={"40px"}/>}
                   </Button>
                 </InputRightElement>
               </InputGroup>
