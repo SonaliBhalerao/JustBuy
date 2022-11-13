@@ -82,19 +82,19 @@ const MensProductPage = () =>{
                 <Box >
                   <Image height={["150px", "200px", "250px"]} width={["100%"]} display={{ sm:"block",base:"none"}} alignItems src="https://images.bewakoof.com/uploads/category/desktop/INSIDE-BANNER_DESKTOP_FREEBIE-1667998388.jpg"></Image>
                 </Box>
-                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide' w={"220px"} borderBottom={"2px solid rgb(253,216,53)"} >Men Clothing {getMenData.length}</Text>
+                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide' w={"230px"} borderBottom={"2px solid rgb(253,216,53)"} >Men Clothing ({getMenData.length})</Text>
 
                 {/* products and filter flex */}
                 <Flex direction={{base:"column", lg:"row", md:"row"}} mt={10} mb={6} gap={2}>
 
                     {/* left box */}
-                    <Box width={"35%"} p={5} display={{ sm:"block",base:"none"}} mt={-6} >
-                        <Flex gap={"40%"}  height={"20px"} flexDirection={"row"} >
+                    <Box width={"40%"} p={5} display={{ sm:"block",base:"none"}} mt={-6} >
+                        <Flex gap={"42%"}  height={"20px"} flexDirection={"row"} >
                             <Text fontSize={"13px"} color={"#969696"} textAlign="left" ml="16px" fontWeight="bold">FILTERS</Text>
                             <Text fontSize={"13px"} color={"#73A2A2"} ml="16px" fontWeight="semibold" ><a>Clear All</a></Text>  
                         </Flex>
 
-                        <Accordion defaultIndex={[0]} allowMultiple>
+                        <Accordion defaultIndex={[0]} allowMultiple cursor={"pointer"}>
                             {/* category */}
                             <AccordionItem>
                                 <h2>
@@ -259,9 +259,9 @@ const MensProductPage = () =>{
                         <SimpleGrid columns={[1, 2, 2, 3]} spacing={5} height={"670px"} direction={{base:"column", lg:"row"}} overflow={"scroll"} >
                                 {getMenData.map((e)=>{
                                     return (
-                                        <Box className="mapBox" p={1}>
+                                        <Box className="mapBox" p={1} cursor={"pointer"}>
                                             <Image src={e.productImg} h={"350px"} w={"100%"}></Image>
-                                            <Text fontWeight={"semibold"} color={"#4F5362"} fontSize={"13px"} letterSpacing={"wide"}>Bewakoof</Text>
+                                            <Text fontWeight={"semibold"} color={"#4F5362"} fontSize={"13px"} letterSpacing={"wide"}>JustBuy</Text>
                                             <Text fontWeight={"normal"} color={"#949494"} fontSize={"11px"} letterSpacing={"wide"}>{e.description}</Text>
                                             <Flex gap={1.5} mb={1}>
                                                 <Text fontWeight={"bold"} color={"black"} fontSize={"16px"} letterSpacing={"wide"}>₹{e.finalprice}</Text>

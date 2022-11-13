@@ -41,8 +41,6 @@ const WomensProductPage = () =>{
         handleWomenData()
     },[])
 
-    console.log("final", getWomenData );
-
     return (
         // main box
         <Box   pr={"40px"} pl={"40px"} >
@@ -50,14 +48,14 @@ const WomensProductPage = () =>{
                 <Box >
                   <Image height={["150px", "200px", "250px"]} width={["100%"]} display={{ sm:"block",base:"none"}} alignItems src="https://images.bewakoof.com/uploads/category/desktop/INSIDE-BANNER_DESKTOP_FREEBIE-1667998388.jpg"></Image>
                 </Box>
-                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide'>Women Clothing (50)</Text>
+                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide' w={"230px"} borderBottom={"2px solid rgb(253,216,53)"} >Men Clothing ({getWomenData.length})</Text>
 
                 {/* products and filter flex */}
                 <Flex direction={{base:"column", lg:"row", md:"row"}} mt={10} mb={6} gap={2}>
 
                     {/* left box */}
-                    <Box width={"30%"} p={5} display={{ sm:"block",base:"none"}} mt={-6}>
-                        <Flex gap={"50%"}  height={"20px"} flexDirection={"row"} mb={5}>
+                    <Box width={"40%"} p={5} display={{ sm:"block",base:"none"}} mt={-6}>
+                        <Flex gap={"40%"}  height={"20px"} flexDirection={"row"} mb={5}>
                             <Text fontSize={"13px"} color={"#969696"} textAlign="left" ml="16px" fontWeight="bold">FILTERS</Text>
                             <Text fontSize={"13px"} color={"#73A2A2"} ml="16px" fontWeight="semibold" ><a>Clear All</a></Text>  
                         </Flex>
