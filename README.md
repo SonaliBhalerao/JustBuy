@@ -18,7 +18,7 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
  ## Team members and contribution
 
  | Team Member            | Contribution                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| ----------------- | ------------------------------------------------------------------ |
 | Adil | Home Page | Men page | Women Page | Admin Panel Frontend | Admin Panel Backend | NavBar | Footer
 | Sonali | Signup, Login Page  | SignUp And Login Express APIs
 | Naveed | Single Product Page | Express - Products APIs
