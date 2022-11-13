@@ -2,13 +2,14 @@ import { Box, CircularProgress, Flex, Image, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useNavigate } from 'react-router-dom';
 
 export const ClearenceZoneMen = () => {
 
   const [data,setData] = useState([])
-
+  const navigate = useNavigate()
   useEffect(() => {
-    fetch('http://localhost:4000/products/men_asc', {
+    fetch('https://justbuybackend.onrender.com/products/men_asc', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
@@ -58,7 +59,8 @@ console.log(data)
                           key={e} 
                           _hover={{
                             cursor:"pointer",
-                          }} 
+                          }}
+                          onClick={()=> { navigate(`/mens-home/${e._id}`) }} 
                         >
                           <Image 
                             src={e.productImg} 

@@ -37,7 +37,7 @@ export const MensSinglePage=()=>{
    //Params.id
     console.log(MensSingleProduct,isLoding,isError);
     return(
-        <Container height={{base:"auto",lg:"580px"}}  maxW={{base:"100%",md:"90%",lg:"75%"}} marginTop={"10px"} >
+        <Container maxW={{base:"100%",md:"90%",lg:"75%"}} marginTop={"10px"} >
             <Flex gap={"10px"} maxW={"100%"} direction={{base:"column",lg:"row"}}>
                   <SingleProductImg data={MensSingleProduct}/>
                   <SingleProductDetial data={MensSingleProduct}/>

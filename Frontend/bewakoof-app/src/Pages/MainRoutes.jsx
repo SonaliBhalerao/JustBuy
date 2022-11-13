@@ -13,6 +13,7 @@ import { Signup } from './Signup/Signup'
 import { MensSinglePage } from './Single_page/MenSinglepage'
 import { WomensSinglePage } from './Single_page/WomensSinglepage'
 import { WomensHomePage } from './womens_home_page/WomensHomePage'
+import { LoginAuth } from '../LoginAuth/LoginAuth'
 
 export const MainRoutes = () => {
   return (
@@ -21,12 +22,12 @@ export const MainRoutes = () => {
             <Route path={"/"} element={<HomePage/>} />
             <Route path={"/mens-home"} element={<MensHomePage/>} />
             <Route path={"/womens-home"} element={<WomensHomePage/>} />
-            <Route path={"/mens-home/:name"} element={<MensSinglePage/>} />
-            <Route path={"/womens-home/:name"} element= {<WomensSinglePage/>}/>
+            <Route path={"/mens-home/:name"} element={ <LoginAuth><MensSinglePage/></LoginAuth>} />
+            <Route path={"/womens-home/:name"} element= {<LoginAuth><WomensSinglePage/></LoginAuth>}/>
             <Route path={"/men"} element={<MensProductPage/>} />
             <Route path={"/women"} element={<WomensProductPage/>} />
-            <Route path={"/women/:name"} element= {<WomensSinglePage/>}/>
-            <Route path={"/men/:name"} element= {<MensSinglePage/>}/>
+            <Route path={"/women/:name"} element= {<LoginAuth><WomensSinglePage/></LoginAuth>}/>
+            <Route path={"/men/:name"} element= {<LoginAuth><MensSinglePage/></LoginAuth>}/>
             <Route path={"/signup"} element={<Signup/>} />
             <Route path={"/admin"} element={ <ReqAdminAuth> <Admin/> </ReqAdminAuth>} />
             <Route path={"/admin/signup"} element={<AdminSignup/>} />
