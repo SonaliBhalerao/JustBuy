@@ -102,12 +102,12 @@ const patchData = () => {
                 <ModalBody pb={6}>
                   <FormControl>
                     <FormLabel fontFamily={"Montserrat"} >Your StrickPrice is Rs  {element.strickprice} update your Price?</FormLabel>
-                    <Input ref={initialRef} placeholder='Heading' value={strickPrice} onChange={(e)=> {setStrickPrice(e.target.value)} }  />
+                    <Input ref={initialRef} placeholder='Price' value={strickPrice} onChange={(e)=> {setStrickPrice(e.target.value)} }  />
                   </FormControl>
       
                   <FormControl mt={4}>
                     <FormLabel fontFamily={"Montserrat"} >Your TribePrice is Rs  {element.tribeprice} update your Price?</FormLabel>
-                    <Input placeholder='Todo' value={tribePrice} onChange={(e)=> {setTribePrice(e.target.value)} }  />
+                    <Input placeholder='Price' value={tribePrice} onChange={(e)=> {setTribePrice(e.target.value)} }  />
                   </FormControl>
 
                 </ModalBody>
