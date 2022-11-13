@@ -8,11 +8,22 @@ import {
 	Spacer,
 	Button,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { GrFormNext } from "react-icons/gr";
-import { FcNext } from "react-icons/fc";
 import CartProductCard from "./CartProductCard";
 import Coupons from "./Coupons";
+import CartPriceSummary from "./CartPriceSummary";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import {
+	editCartProductFailure,
+	editCartProductRequest,
+	editCartProductSuccess,
+	getCartProductsFailure,
+	getCartProductsRequest,
+	getCartProductsSuccess,
+} from "../../Redux/AppReducer/action";
+import Address from "../Address/Address";
 
 const CouponDescription = [
 	"Whistles! Get extra 10% cashback on all prepaid orders above Rs.499. Use Code - PREP10.",
@@ -42,6 +53,46 @@ const cart = [
 ];
 
 const Cart = () => {
+	const dispatch = useDispatch();
+
+	//GET REQUEST FOR FETCHING CART ITEM DATA
+	const getCartProducts = () => {
+		dispatch(getCartProductsRequest());
+		return axios
+			.get(`http://localhost:4000/products/cart`)
+			.then((res) => {
+				console.log(res);
+				dispatch(getCartProductsSuccess(res.data));
+			})
+			.catch((error) => {
+				console.log(error);
+				dispatch(getCartProductsFailure());
+			});
+	};
+
+	//EDIT CART ITEMS
+
+	const editCartProduct = (Size, Qty) => {
+		const newCartList = setSingleProduct({
+			...singleProduct,
+			name: title,
+			price: price,
+		});
+
+		dispatch(editCartProductRequest());
+		return axios
+			.patch(`http://localhost:8080/products/cart`, {
+				Size: Size,
+				Qty: Qty,
+			})
+			.then((res) => {
+				dispatch(editCartProductSuccess(newCartList));
+			})
+			.catch((error) => {
+				dispatch(editCartProductFailure());
+			});
+	};
+
 	const totalFinalPrice = cart.reduce(
 		(previousValue, currentValue) =>
 			previousValue + Number(currentValue.finalprice),
@@ -53,6 +104,30 @@ const Cart = () => {
 			previousValue + Number(currentValue.strickprice),
 		0
 	);
+
+	const priceSummary = [
+		{
+			left: "Total MRP (Incl. of taxes)",
+			right: totalStrickPrice,
+		},
+		{
+			left: "Shipping Charges",
+			right: "FREE",
+		},
+		{
+			left: "Bag Discount",
+			right: totalStrickPrice - totalFinalPrice,
+		},
+		{
+			left: "Total MRP (Incl. of taxes)",
+			right: totalFinalPrice,
+		},
+	];
+
+	// useEffect for fetching cart item for the mounting phase
+	useEffect(() => {
+		getCartProducts();
+	}, []);
 
 	return (
 		<Box width={"100%"}>
@@ -133,26 +208,19 @@ const Cart = () => {
 								<Text fontWeight={"bold"}>PRICE SUMMARY</Text>
 							</Box>
 
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Total MRP (Incl. of taxes) </Text>
-								<Spacer />
-								<Text>₹ {totalStrickPrice} </Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Shipping Charges </Text>
-								<Spacer />
-								<Text>FREE</Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Bag Discount </Text>
-								<Spacer />
-								<Text>-₹ {totalStrickPrice - totalFinalPrice} </Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Subtotal </Text>
-								<Spacer />
-								<Text>₹ {totalFinalPrice} </Text>
-							</HStack>
+							{priceSummary.map((item, i) => (
+								<HStack px={5} py={1.5} w={"100%"}>
+									<Text>{item.left} </Text>
+									<Spacer />
+
+									{i === 1 ? (
+										<Text>{item.right} </Text>
+									) : (
+										<Text>₹ {item.right} </Text>
+									)}
+								</HStack>
+							))}
+
 							<Box mt={2} px={5}>
 								<Box
 									mb={10}
@@ -191,14 +259,7 @@ const Cart = () => {
 									<Text fontSize={"17px"}>₹ {totalFinalPrice}</Text>
 								</Box>
 								<Spacer />
-								<Button
-									width={"60%"}
-									p={6}
-									fontSize={"18px"}
-									colorScheme="teal"
-								>
-									ADD ADDRESS
-								</Button>
+								<Address />
 							</HStack>
 						</Box>
 					</Box>

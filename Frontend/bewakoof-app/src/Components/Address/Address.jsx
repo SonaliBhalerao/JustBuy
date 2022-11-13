@@ -42,7 +42,15 @@ const Address = () => {
 	return (
 		<>
 			<ChakraProvider theme={theme}>
-				<Button onClick={onOpen}>Open Modal</Button>
+				<Button
+					width={"60%"}
+					p={6}
+					fontSize={"18px"}
+					colorScheme="teal"
+					onClick={onOpen}
+				>
+					ADD ADDRESS
+				</Button>
 
 				<Modal
 					blockScrollOnMount={true}

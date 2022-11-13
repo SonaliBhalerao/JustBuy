@@ -2,6 +2,8 @@ import { Box, Button, HStack, Text, Image } from "@chakra-ui/react";
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
+import CartQuantityButton from "./CartQuantityButton";
+import CartSizeButton from "./CartSizeButton";
 
 const CartProductCard = ({
 	description,
@@ -49,7 +51,7 @@ const CartProductCard = ({
 						{`You saved ₹${saved}!`}
 					</Text>
 					<HStack spacing={"20px"} mt={5}>
-						<Button
+						{/* <Button
 							rightIcon={<FiChevronDown />}
 							colorScheme="gray"
 							variant="outline"
@@ -57,9 +59,12 @@ const CartProductCard = ({
 							px={"10px"}
 						>
 							Size : {size}
-						</Button>
+						</Button> */}
+						<CartSizeButton size={size} />
 
-						<Button
+						<CartQuantityButton qty={Qty} />
+
+						{/* <Button
 							rightIcon={<FiChevronDown />}
 							colorScheme="gray"
 							variant="outline"
@@ -67,7 +72,7 @@ const CartProductCard = ({
 							px={"10px"}
 						>
 							Qty : {Qty}
-						</Button>
+						</Button> */}
 					</HStack>
 				</Box>
 
