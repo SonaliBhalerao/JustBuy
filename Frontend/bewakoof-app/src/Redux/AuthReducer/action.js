@@ -6,7 +6,7 @@ import axios from 'axios'
 //     dispatch({ type : types.SIGNUP_REQUEST });
 
 //     axios
-//     .post("http://localhost:4000/signup", data)
+//     .post("https://justbuybackend.onrender.com/signup", data)
 //     .then((res)=>{
 //         console.log(res);
 //         dispatch({ type : types.SIGNUP_SUCCESS, payload: res.data});

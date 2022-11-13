@@ -231,7 +231,7 @@ return (
                             display='flex' justifyContent='center' alignItems='center'
                 >
                         <Box className="dropdown">
-                        <Link to="/wo   men" >
+                        <Link to="/women" >
                             <Box className="dropbtn"> Women </Box>
                         </Link>
                             <Box 

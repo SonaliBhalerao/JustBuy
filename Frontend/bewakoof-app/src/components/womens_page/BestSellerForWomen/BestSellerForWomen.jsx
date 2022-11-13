@@ -8,7 +8,7 @@ export const BestSellerForWomen = () => {
   const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/women', {
+    fetch('https://justbuybackend.onrender.com/products/women', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'

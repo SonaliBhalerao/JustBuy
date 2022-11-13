@@ -73,7 +73,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {categoryData.map((el)=> {
-                                    return <AccordionPanel onClick={(e)=> handleCategory(e) } pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -86,7 +86,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {size.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -99,7 +99,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {brand.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
                             
@@ -112,7 +112,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {color.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -125,7 +125,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {design.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -138,7 +138,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {fit.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -151,7 +151,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {sleeve.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -164,7 +164,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {neck.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
         
@@ -177,7 +177,7 @@ const WomensProductPage = () =>{
                                  </AccordionButton>
                                  </h2>
                                  {categoryData.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                              </AccordionItem>
 
@@ -190,7 +190,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {rating.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -203,7 +203,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {discount.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -216,7 +216,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {sortBy.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
