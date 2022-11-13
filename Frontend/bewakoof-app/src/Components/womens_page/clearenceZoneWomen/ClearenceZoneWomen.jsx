@@ -1,15 +1,14 @@
-import { Box, CircularProgress, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, CircularProgress, Flex, Image,Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useNavigate } from 'react-router-dom';
 
-export const ClearenceZoneMen = () => {
+export const ClearenceZoneWomen = () => {
 
   const [data,setData] = useState([])
-  const navigate = useNavigate()
+
   useEffect(() => {
-    fetch('https://justbuybackend.onrender.com/products/men_asc', {
+    fetch('http://localhost:4000/products/women_asc', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
@@ -17,7 +16,7 @@ export const ClearenceZoneMen = () => {
     .then((response) => response.json())
     .then((response) => setData(response));
   }, [])
-console.log(data)
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -41,9 +40,8 @@ console.log(data)
       slidesToSlide: 3
     }
   };
-
   return (
-    <Box minHeight={"300px"} >
+    <Box minHeight={"300px"}  >
        { data.length>0 ?
         <Carousel 
             arrows={true}
@@ -59,8 +57,7 @@ console.log(data)
                           key={e} 
                           _hover={{
                             cursor:"pointer",
-                          }}
-                          onClick={()=> { navigate(`/mens-home/${e._id}`) }} 
+                          }} 
                         >
                           <Image 
                             src={e.productImg} 

@@ -25,6 +25,9 @@ import {
 } from "@chakra-ui/react";
 import RadioCard from "./RadioCard";
 import { theme } from "./ThemeLabel";
+import { useState } from "react";
+import { SaveTheToken } from "../../Utils/LocalStorage";
+import { useNavigate } from "react-router";
 
 const Address = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,6 +41,39 @@ const Address = () => {
 	});
 
 	const group = getRootProps();
+
+	const navigate = useNavigate();
+
+	//Address feilds
+
+	const [country, setCountry] = useState("India");
+	const [name, setName] = useState("");
+	const [phone, setPhone] = useState("");
+	const [pin, setPin] = useState("");
+	const [city, setCity] = useState("");
+	const [state, setState] = useState("");
+	const [flat, setFlat] = useState("");
+	const [area, setArea] = useState("");
+	const [locality, setLocality] = useState("");
+	const [addressType, setAddressType] = useState("");
+
+	const handleSubmit = () => {
+		SaveTheToken("Address", {
+			country,
+			name,
+			phone,
+			pin,
+			city,
+			state,
+			flat,
+			area,
+			locality,
+			addressType,
+		});
+
+		navigate("/cart/payment");
+		onClose();
+	};
 
 	return (
 		<>
@@ -67,10 +103,14 @@ const Address = () => {
 						<ModalCloseButton />
 						<ModalBody>
 							<Stack spacing={8} mx={8}>
-								<Select placeholder="Select Country" size="lg">
-									<option value="option1">India</option>
-									<option value="option2">UAE</option>
-									<option value="option3">USA</option>
+								<Select
+									placeholder="Select Country"
+									size="lg"
+									onChange={(e) => setCountry(e.target.value)}
+								>
+									<option value="India">India</option>
+									<option value="UAE">UAE</option>
+									<option value="USA">USA</option>
 								</Select>
 
 								<Divider borderColor={"lightgrey"} />
@@ -78,7 +118,12 @@ const Address = () => {
 								{/* Full name field */}
 
 								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" type="text" />
+									<Input
+										placeholder=" "
+										size="lg"
+										type="text"
+										onChange={(e) => setName(e.target.value)}
+									/>
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
@@ -93,7 +138,12 @@ const Address = () => {
 								<InputGroup size="lg">
 									<InputLeftAddon children="+91" />
 									<FormControl variant="floating" isRequired>
-										<Input placeholder=" " size="lg" type="tel" />
+										<Input
+											placeholder=" "
+											size="lg"
+											type="tel"
+											onChange={(e) => setPhone(e.target.value)}
+										/>
 										<FormLabel
 											fontSize={"1rem"}
 											fontWeight={"bold"}
@@ -109,7 +159,12 @@ const Address = () => {
 								{/* Pin code field */}
 
 								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" id="pin" />
+									<Input
+										placeholder=" "
+										size="lg"
+										id="pin"
+										onChange={(e) => setPin(e.target.value)}
+									/>
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
@@ -123,7 +178,11 @@ const Address = () => {
 
 								<Stack direction={["column", "row"]} spacing="24px">
 									<FormControl variant="floating" isRequired>
-										<Input placeholder=" " size="lg" />
+										<Input
+											placeholder=" "
+											size="lg"
+											onChange={(e) => setCity(e.target.value)}
+										/>
 										<FormLabel
 											fontSize={"1rem"}
 											fontWeight={"bold"}
@@ -134,7 +193,11 @@ const Address = () => {
 									</FormControl>
 
 									<FormControl variant="floating" isRequired>
-										<Input placeholder=" " size="lg" />
+										<Input
+											placeholder=" "
+											size="lg"
+											onChange={(e) => setState(e.target.value)}
+										/>
 										<FormLabel
 											fontSize={"1rem"}
 											fontWeight={"bold"}
@@ -148,20 +211,28 @@ const Address = () => {
 								{/* Flat Number And Building details */}
 
 								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" />
+									<Input
+										placeholder=" "
+										size="lg"
+										onChange={(e) => setFlat(e.target.value)}
+									/>
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
 										color="gray.400"
 									>
-										Falt no/Building, Street name
+										Flat no/Building, Street name
 									</FormLabel>
 								</FormControl>
 
 								{/* Area / Locality details */}
 
 								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" />
+									<Input
+										placeholder=" "
+										size="lg"
+										onChange={(e) => setArea(e.target.value)}
+									/>
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
@@ -173,8 +244,12 @@ const Address = () => {
 
 								{/* LandMark details */}
 
-								<FormControl variant="floating" isRequired>
-									<Input placeholder=" " size="lg" />
+								<FormControl variant="floating">
+									<Input
+										placeholder=" "
+										size="lg"
+										onChange={(e) => setLocality(e.target.value)}
+									/>
 									<FormLabel
 										fontSize={"1rem"}
 										fontWeight={"bold"}
@@ -190,11 +265,15 @@ const Address = () => {
 									</Text>
 
 									<HStack {...group} mt={3}>
-										{options.map((value) => {
-											const radio = getRadioProps({ value });
+										{options.map((ele) => {
+											const radio = getRadioProps({ ele });
 											return (
-												<RadioCard key={value} {...radio}>
-													{value}
+												<RadioCard
+													key={ele}
+													{...radio}
+													onClick={(e) => setAddressType(e.target.value)}
+												>
+													{ele}
 												</RadioCard>
 											);
 										})}
@@ -209,7 +288,7 @@ const Address = () => {
 									colorScheme="teal"
 									px={16}
 									py={6}
-									onClick={onClose}
+									onClick={handleSubmit}
 									fontSize={20}
 								>
 									SAVE ADDRESS
@@ -221,6 +300,7 @@ const Address = () => {
 									py={6}
 									_hover="none"
 									fontSize={20}
+									onClick={onClose}
 								>
 									CANCEL
 								</Button>
