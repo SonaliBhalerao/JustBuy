@@ -99,7 +99,7 @@ export default function LoginComponent(){
                 <Box margin={"auto"} display={"flex"} >    
                     <Text fontfamily={"Montserrat"} >Don't have an Account?  </Text> 
                     <Link ml={"10px"} to="/signup" > 
-                        <Text ml={"10px"} textDecoration={"underline"} fontWeight={500} color={"blue"}>Signup</Text> 
+                        <Text ml={"10px"}    textDecoration={"underline"} fontWeight={500} color={"blue"}>Signup</Text> 
                     </Link>
                 </Box>
         </Box>

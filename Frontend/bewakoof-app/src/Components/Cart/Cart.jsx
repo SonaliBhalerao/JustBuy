@@ -60,7 +60,7 @@ const Cart = () => {
 	// const getCartProducts = () => {
 	// 	dispatch(getCartProductsRequest());
 	// 	return axios
-	// 		.get(`http://localhost:4000/products/cart`)
+	// 		.get(`https://justbuybackend.onrender.com/products/cart`)
 	// 		.then((res) => {
 	// 			console.log(res);
 	// 			dispatch(getCartProductsSuccess(res.data));
@@ -148,7 +148,7 @@ const Cart = () => {
 						<HStack
 							px={3}
 							py={4}
-							bg={"#fcffee"}
+							bg={"#fcffee"}a
 							fontSize={"13px"}
 							borderRadius="2px"
 						>

@@ -13,9 +13,11 @@ import { FaSistrix } from "react-icons/fa";
 import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
 
 
+
 export const Navbar = () => {
     
     const { isOpen, onOpen,onClose } = useDisclosure();
+
 return (
     <Box 
         borderBottom={"1px solid lightgray"}
@@ -146,6 +148,54 @@ return (
         <Spacer/>
 
         {/* // small screen */}
+                    <Box mr={"20px"}  >
+
+                        <Button 
+                            as={Button} 
+                            bg={"white"}
+                            _hover={{bg:"white",cursor:"pointer"}} 
+                            colorScheme={"white"} 
+                            p={"10px"} m={"0px"} 
+                            onClick={ () => {
+                                
+                            }}
+                        >
+                            <BsHeart color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"} />
+                        </Button>
+
+                        <Button mr={'16px'}
+                            bg={"white"} 
+                            as={Button} 
+                            _hover={{bg:"white",cursor:"pointer"}} 
+                            colorScheme={"white"} 
+                            p={"10px"} 
+                            m={"0px"} 
+                            onClick={ () => {
+                                
+                            }}
+                        >
+                            <Link to="/cart" >  <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  /> </Link>
+                        </Button>
+
+                         <Menu >
+                        <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
+                            <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>Account</MenuItem>
+                            <MenuItem>Wishlist</MenuItem>
+                            <MenuItem>Orders</MenuItem>
+                            <MenuItem>Wallet</MenuItem>
+                            <MenuItem onClick={ () => {SaveTheToken("userToken","")} } >Logout</MenuItem>
+                        </MenuList>
+                        </Menu>
+                           
+                            <Link to="/login" >
+                                <Button  fontFamily={"Montserrat"} fontSize={"14px"} >log-in</Button>
+                            </Link>
+                        
+
+                    </Box>
         
         </Flex>
 
@@ -158,8 +208,11 @@ return (
                 margin={"auto"} 
                 // border={"1px solid red"}
             >
-                
-                    <img width={"8%"} src="https://i.imgur.com/J7Bdko1.png" alt="" srcset="" />
+                    <Box width={"8%"}  >
+                        <Link to="/"  _hover={{cursor:"pointer"}} >
+                            <img width={"100%"} src="https://i.imgur.com/J7Bdko1.png" alt="" srcset="" />
+                        </Link>
+                    </Box>
 
                 <DesktopNav />
             </Flex>  
@@ -169,7 +222,7 @@ return (
 );
 }
   
-  const DesktopNav = () => {
+  const DesktopNav = (token) => {
 
     return (
         <HStack 
@@ -231,7 +284,7 @@ return (
                             display='flex' justifyContent='center' alignItems='center'
                 >
                         <Box className="dropdown">
-                        <Link to="/wo   men" >
+                        <Link to="/women" >
                             <Box className="dropbtn"> Women </Box>
                         </Link>
                             <Box 
@@ -316,19 +369,21 @@ return (
                         <BsHeart color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"} />
                     </Button>
 
-                    <Button 
-                        bg={"white"} 
-                        as={Button} 
-                        _hover={{bg:"white",cursor:"pointer"}} 
-                        colorScheme={"white"} 
-                        p={"10px"} 
-                        m={"0px"} 
-                        onClick={ () => {
-                            
-                        }}
-                    >
-                        <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  />
-                    </Button>
+                    <Link to="/cart" >
+                        <Button 
+                            bg={"white"} 
+                            as={Button} 
+                            _hover={{bg:"white",cursor:"pointer"}} 
+                            colorScheme={"white"} 
+                            p={"10px"} 
+                            m={"0px"} 
+                            onClick={ () => {
+                                
+                            }}
+                        >
+                            <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  />
+                        </Button>
+                    </Link>
 
                 </Flex>                   
             </Flex>

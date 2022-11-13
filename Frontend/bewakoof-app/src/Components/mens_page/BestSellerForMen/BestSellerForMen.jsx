@@ -9,7 +9,7 @@ export const BestSellerForMen = () => {
 const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/men', {
+    fetch('https://justbuybackend.onrender.com/products/men', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
