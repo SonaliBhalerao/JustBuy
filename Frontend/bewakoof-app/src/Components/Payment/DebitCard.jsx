@@ -96,8 +96,10 @@ const onsubmit = () => {
         toast({
             title: 'payment Successfull created.',
             description: "We've recived your payment",
+            position: 'top',
+            marginTop: '150px',
             status: 'success',
-            duration: 2000,
+            duration: 3000,
             isClosable: true,
           })
     }

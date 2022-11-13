@@ -1,10 +1,11 @@
 import React from 'react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Flex } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Flex, HStack, Image } from '@chakra-ui/react'
 import { DebitCard } from '../../Components/Payment/DebitCard'
 import { Wallet } from '../../Components/Payment/Wallet'
 
-export const Payment = () => {
 
+export const Payment = () => {
+    
   return (
        <Flex width={"60%"} margin={"auto"} >
         <Box width={"80%"} >
@@ -66,7 +67,8 @@ export const Payment = () => {
         </Tabs>
         </Box>
         <Box width={"20%"}  >
-Cart items to be display
+        
+					
         </Box>
     </Flex>
   )

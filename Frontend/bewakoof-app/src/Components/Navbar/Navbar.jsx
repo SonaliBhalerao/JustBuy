@@ -11,12 +11,12 @@ import SmileIcon from '../Icons/SmileIcon';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
 import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
-import {getLocalData} from "../../Utils/LocalStorage"
+
+
 
 export const Navbar = () => {
     
     const { isOpen, onOpen,onClose } = useDisclosure();
-    const token = getLocalData("userToken")
 
 return (
     <Box 
@@ -177,7 +177,7 @@ return (
                             <Link to="/cart" >  <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  /> </Link>
                         </Button>
 
-                        { token!=null || token!=undefined  ? <Menu >
+                         <Menu >
                         <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
                             <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
                         </MenuButton>
@@ -189,11 +189,11 @@ return (
                             <MenuItem onClick={ () => {SaveTheToken("userToken","")} } >Logout</MenuItem>
                         </MenuList>
                         </Menu>
-                            :
+                           
                             <Link to="/login" >
                                 <Button  fontFamily={"Montserrat"} fontSize={"14px"} >log-in</Button>
                             </Link>
-                        }
+                        
 
                     </Box>
         
@@ -222,7 +222,7 @@ return (
 );
 }
   
-  const DesktopNav = () => {
+  const DesktopNav = (token) => {
 
     return (
         <HStack 
@@ -284,7 +284,7 @@ return (
                             display='flex' justifyContent='center' alignItems='center'
                 >
                         <Box className="dropdown">
-                        <Link to="/wo   men" >
+                        <Link to="/women" >
                             <Box className="dropbtn"> Women </Box>
                         </Link>
                             <Box 
@@ -369,19 +369,21 @@ return (
                         <BsHeart color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"} />
                     </Button>
 
-                    <Button 
-                        bg={"white"} 
-                        as={Button} 
-                        _hover={{bg:"white",cursor:"pointer"}} 
-                        colorScheme={"white"} 
-                        p={"10px"} 
-                        m={"0px"} 
-                        onClick={ () => {
-                            
-                        }}
-                    >
-                        <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  />
-                    </Button>
+                    <Link to="/cart" >
+                        <Button 
+                            bg={"white"} 
+                            as={Button} 
+                            _hover={{bg:"white",cursor:"pointer"}} 
+                            colorScheme={"white"} 
+                            p={"10px"} 
+                            m={"0px"} 
+                            onClick={ () => {
+                                
+                            }}
+                        >
+                            <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  />
+                        </Button>
+                    </Link>
 
                 </Flex>                   
             </Flex>
