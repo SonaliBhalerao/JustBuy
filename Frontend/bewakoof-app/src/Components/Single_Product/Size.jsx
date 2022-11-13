@@ -1,13 +1,14 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Text } from '@chakra-ui/react'
-export default function Size(){
+
+export default function Size({setsize}){ 
     return(
 <Tabs variant='unstyled' marginTop={"10px"}>
     <TabList gap={"5px"}>
-            <Tab width={{base:"40px",md:"50px"}} wi border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>S</Tab>
-            <Tab width={{base:"40px",md:"50px"}}border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>M</Tab>
-            <Tab width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>L</Tab>
-            <Tab width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>XL</Tab>
-            <Tab width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>2XL</Tab>
+            <Tab onClick={()=>{setsize("S")}} width={{base:"40px",md:"50px"}} wi border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>S</Tab>
+            <Tab onClick={()=>{setsize("M")}} width={{base:"40px",md:"50px"}}border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>M</Tab>
+            <Tab onClick={()=>{setsize("L")}} width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>L</Tab>
+            <Tab onClick={()=>{setsize("XL")}} width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>XL</Tab>
+            <Tab onClick={()=>{setsize("2XL")}} width={{base:"40px",md:"50px"}} border={"1px solid black"} borderRadius={"5px"} _selected={{ color: 'white', bg: 'black' }}>2XL</Tab>
     </TabList>
   <TabPanels>
     <TabPanel>
