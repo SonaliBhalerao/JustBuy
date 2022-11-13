@@ -181,22 +181,6 @@ export const editCartProductRequest = () => {
 	};
 };
 
-export const getWomensSingleRequest=()=>{
-    return{
-        type:types.GET_WOMENS_DATA_SINGLE_REQUEST
-    }
-}
-export const getWomensSingleSuccess=(payload)=>{
-    return{
-        type:types.GET_WOMENS_DATA_SINGLE_SUCCESS,
-        payload,
-    }
-}
-export const getWomensSingleFailure=()=>{
-    return{
-        type:types.GET_WOMENS_DATA_SINGLE_FAILURE
-    }
-}
 
 export const FetchWomensSingleData=(id)=>{
     console.log("FetchWomensSingleData ",id)

@@ -19,7 +19,7 @@ const CartProductCard = ({
 		dispatch(removeFromCart(id));
 	};
 
-	const saved = Number(strickprice) - Number(finalprice);
+	const saved = Number(strickprice.slice(1,strickprice.length-1)) - Number(finalprice);
 
 	return (
 		<Box border="1px solid rgb(234, 234, 234)" borderRadius={"5px"} mt={5}>
