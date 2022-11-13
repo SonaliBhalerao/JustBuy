@@ -19,7 +19,7 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 
  | Team Member            | Contribution                                                              |
 | ----------------- | ------------------------------------------------------------------ |
-| Adil | Home Page | NavBar
+| Adil | Home Page | Men page | Women Page | Admin Panel Frontend | Admin Panel Backend | NavBar | Footer
 | Sonali | Signup, Login Page  | SignUp And Login Express APIs
 | Naveed | Single Product Page | Express - Products APIs
 | Sandhya | Products Display Page | Express - Pagination and Filter
@@ -33,6 +33,8 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 | 2 | Dynamic add to cart feature |
 | 3 | Dynamic cart page |
 | 4 | Dummy payment for debit card |
+| 5 | Admin panel created which have the abity to edit data on website |
+| 6 | Every user can only get his owb cart data |
 
 
   
