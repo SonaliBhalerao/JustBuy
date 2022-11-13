@@ -17,7 +17,7 @@ import { getLocalData,SaveTheToken } from '../../Utils/LocalStorage';
 export const Navbar = () => {
     
     const { isOpen, onOpen,onClose } = useDisclosure();
-    
+    const token = getLocalData("userToken")
 return (
     <Box 
         borderBottom={"1px solid lightgray"}
@@ -177,6 +177,24 @@ return (
                             <Link to="/cart" >  <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  /> </Link>
                         </Button>
 
+                        { token!=null || token!=undefined  ? <Menu >
+                        <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
+                            <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>Account</MenuItem>
+                            <MenuItem>Wishlist</MenuItem>
+                            <MenuItem>Orders</MenuItem>
+                            <MenuItem>Wallet</MenuItem>
+                            <MenuItem onClick={ () => {SaveTheToken("userToken","")} } >Logout</MenuItem>
+                        </MenuList>
+                        </Menu>
+                            :
+                            <Link to="/login" >
+                                <Button  fontFamily={"Montserrat"} fontSize={"14px"} >log-in</Button>
+                            </Link>
+                        }
+
                     </Box>
         
         </Flex>
@@ -190,8 +208,11 @@ return (
                 margin={"auto"} 
                 // border={"1px solid red"}
             >
-                
-                    <img width={"8%"} src="https://i.imgur.com/J7Bdko1.png" alt="" srcset="" />
+                    <Box width={"8%"}  >
+                        <Link to="/"  _hover={{cursor:"pointer"}} >
+                            <img width={"100%"} src="https://i.imgur.com/J7Bdko1.png" alt="" srcset="" />
+                        </Link>
+                    </Box>
 
                 <DesktopNav />
             </Flex>  
