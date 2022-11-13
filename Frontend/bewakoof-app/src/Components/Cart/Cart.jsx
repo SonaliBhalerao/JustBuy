@@ -8,11 +8,22 @@ import {
 	Spacer,
 	Button,
 } from "@chakra-ui/react";
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import { GrFormNext } from "react-icons/gr";
-import { FcNext } from "react-icons/fc";
 import CartProductCard from "./CartProductCard";
+import Coupons from "./Coupons";
+import CartPriceSummary from "./CartPriceSummary";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import {
+	editCartProductFailure,
+	editCartProductRequest,
+	editCartProductSuccess,
+	getCartProductsFailure,
+	getCartProductsRequest,
+	getCartProductsSuccess,
+} from "../../Redux/AppReducer/action";
+import Address from "../Address/Address";
 
 const CouponDescription = [
 	"Whistles! Get extra 10% cashback on all prepaid orders above Rs.499. Use Code - PREP10.",
@@ -21,47 +32,103 @@ const CouponDescription = [
 
 const cart = [
 	{
-		productName: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		price: 649,
-		savedMessage: "You saved ₹300!",
+		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
+		finalprice: 649,
+		strickprice: 999,
 		size: "L",
 		Qty: 1,
-		image:
+		productImg:
 			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
 	},
 
 	{
-		productName: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		price: 649,
-		savedMessage: "You saved ₹300!",
+		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
+		finalprice: 599,
+		strickprice: 899,
 		size: "L",
 		Qty: 1,
-		image:
-			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
-	},
-
-	{
-		productName: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		price: 649,
-		savedMessage: "You saved ₹300!",
-		size: "L",
-		Qty: 1,
-		image:
-			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
-	},
-
-	{
-		productName: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		price: 649,
-		savedMessage: "You saved ₹300!",
-		size: "L",
-		Qty: 1,
-		image:
+		productImg:
 			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
 	},
 ];
 
 const Cart = () => {
+	const dispatch = useDispatch();
+
+	//GET REQUEST FOR FETCHING CART ITEM DATA
+	const getCartProducts = () => {
+		dispatch(getCartProductsRequest());
+		return axios
+			.get(`http://localhost:4000/products/cart`)
+			.then((res) => {
+				console.log(res);
+				dispatch(getCartProductsSuccess(res.data));
+			})
+			.catch((error) => {
+				console.log(error);
+				dispatch(getCartProductsFailure());
+			});
+	};
+
+	//EDIT CART ITEMS
+
+	const editCartProduct = (Size, Qty) => {
+		const newCartList = setSingleProduct({
+			...singleProduct,
+			name: title,
+			price: price,
+		});
+
+		dispatch(editCartProductRequest());
+		return axios
+			.patch(`http://localhost:8080/products/cart`, {
+				Size: Size,
+				Qty: Qty,
+			})
+			.then((res) => {
+				dispatch(editCartProductSuccess(newCartList));
+			})
+			.catch((error) => {
+				dispatch(editCartProductFailure());
+			});
+	};
+
+	const totalFinalPrice = cart.reduce(
+		(previousValue, currentValue) =>
+			previousValue + Number(currentValue.finalprice),
+		0
+	);
+
+	const totalStrickPrice = cart.reduce(
+		(previousValue, currentValue) =>
+			previousValue + Number(currentValue.strickprice),
+		0
+	);
+
+	const priceSummary = [
+		{
+			left: "Total MRP (Incl. of taxes)",
+			right: totalStrickPrice,
+		},
+		{
+			left: "Shipping Charges",
+			right: "FREE",
+		},
+		{
+			left: "Bag Discount",
+			right: totalStrickPrice - totalFinalPrice,
+		},
+		{
+			left: "Total MRP (Incl. of taxes)",
+			right: totalFinalPrice,
+		},
+	];
+
+	// useEffect for fetching cart item for the mounting phase
+	useEffect(() => {
+		getCartProducts();
+	}, []);
+
 	return (
 		<Box width={"100%"}>
 			<Box width={"85%"} m={"auto"} my={"30px"} mb="60px">
@@ -100,7 +167,7 @@ const Cart = () => {
 
 					{/* right box */}
 					<Box w={["100%", "40%"]}>
-						<HStack p={3} bg={"#fdd835"} borderRadius="5px">
+						<HStack p={3.5} bg={"#fdd835"} borderRadius="5px" fontSize={"15px"}>
 							<Text>Save extra ₹40 with TriBe</Text>
 							<Spacer />
 							<GrFormNext fontSize={"20px"} />
@@ -112,6 +179,7 @@ const Cart = () => {
 								py={1.5}
 								border="1px solid rgb(234, 234, 234)"
 								borderRadius="5px"
+								fontSize={"15px"}
 								mt={4}
 								lineHeight={"1.4rem"}
 							>
@@ -126,20 +194,7 @@ const Cart = () => {
 							mt={4}
 							lineHeight={"1.4rem"}
 						>
-							<HStack
-								px={2.5}
-								bg={"rgba(66,162,161,.1)"}
-								borderRadius="5px"
-								fontSize={"13px"}
-								color={"rgba(66,162,161)"}
-								as={Button}
-								w={"100%"}
-							>
-								<Text>Have a Coupon / Referral / Gift Card ?</Text>
-								<Spacer />
-								<Text fontWeight={"bold"}>Redeem</Text>
-								<FcNext fontSize={"14px"} />
-							</HStack>
+							<Coupons />
 						</Box>
 
 						{/* Price summary */}
@@ -153,26 +208,19 @@ const Cart = () => {
 								<Text fontWeight={"bold"}>PRICE SUMMARY</Text>
 							</Box>
 
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Total MRP (Incl. of taxes) </Text>
-								<Spacer />
-								<Text>₹ 949 </Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Shipping Charges </Text>
-								<Spacer />
-								<Text>FREE</Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Bag Discount </Text>
-								<Spacer />
-								<Text>-₹ 899 </Text>
-							</HStack>
-							<HStack px={5} py={1.5} w={"100%"}>
-								<Text>Subtotal </Text>
-								<Spacer />
-								<Text>₹ 649 </Text>
-							</HStack>
+							{priceSummary.map((item, i) => (
+								<HStack px={5} py={1.5} w={"100%"}>
+									<Text>{item.left} </Text>
+									<Spacer />
+
+									{i === 1 ? (
+										<Text>{item.right} </Text>
+									) : (
+										<Text>₹ {item.right} </Text>
+									)}
+								</HStack>
+							))}
+
 							<Box mt={2} px={5}>
 								<Box
 									mb={10}
@@ -183,7 +231,10 @@ const Cart = () => {
 									w={"100%"}
 									borderRadius={"15px"}
 								>
-									<Text>You are saving ₹ 300 on this order</Text>
+									<Text>
+										You are saving ₹ {totalStrickPrice - totalFinalPrice} on
+										this order
+									</Text>
 								</Box>
 							</Box>
 						</Box>
@@ -205,17 +256,10 @@ const Cart = () => {
 							>
 								<Box w={"20%"}>
 									<Text fontWeight={"bold"}>Total</Text>
-									<Text fontSize={"17px"}>₹ 649</Text>
+									<Text fontSize={"17px"}>₹ {totalFinalPrice}</Text>
 								</Box>
 								<Spacer />
-								<Button
-									width={"60%"}
-									p={6}
-									fontSize={"18px"}
-									colorScheme="teal"
-								>
-									ADD ADDRESS
-								</Button>
+								<Address />
 							</HStack>
 						</Box>
 					</Box>

@@ -1,15 +1,26 @@
 import { Box, Button, HStack, Text, Image } from "@chakra-ui/react";
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import CartQuantityButton from "./CartQuantityButton";
+import CartSizeButton from "./CartSizeButton";
 
 const CartProductCard = ({
-	productName,
-	price,
-	savedMessage,
+	description,
+	finalprice,
+	strickprice,
 	size,
 	Qty,
-	image,
+	productImg,
 }) => {
+	const dispatch = useDispatch();
+
+	const removeFromCartHandler = (id) => {
+		dispatch(removeFromCart(id));
+	};
+
+	const saved = Number(strickprice) - Number(finalprice);
+
 	return (
 		<Box border="1px solid rgb(234, 234, 234)" borderRadius={"5px"} mt={5}>
 			<HStack
@@ -26,16 +37,21 @@ const CartProductCard = ({
 						fontSize={["13px", "15px"]}
 						color="gray"
 					>
-						{productName}
+						{description}
 					</Text>
-					<Text mt={["1rem", "0.1rem"]} fontSize={"18px"} fontWeight="bold">
-						₹ {price}
-					</Text>
+					<HStack mt={["1rem", "0.1rem"]}>
+						<Text fontSize={"18px"} fontWeight="bold">
+							₹ {finalprice}
+						</Text>
+						<Text fontSize={"14px"} color="gray" as="del">
+							₹{strickprice}
+						</Text>
+					</HStack>
 					<Text color={"#1d8802"} fontSize={["13px", "15px"]}>
-						{savedMessage}
+						{`You saved ₹${saved}!`}
 					</Text>
 					<HStack spacing={"20px"} mt={5}>
-						<Button
+						{/* <Button
 							rightIcon={<FiChevronDown />}
 							colorScheme="gray"
 							variant="outline"
@@ -43,9 +59,12 @@ const CartProductCard = ({
 							px={"10px"}
 						>
 							Size : {size}
-						</Button>
+						</Button> */}
+						<CartSizeButton size={size} />
 
-						<Button
+						<CartQuantityButton qty={Qty} />
+
+						{/* <Button
 							rightIcon={<FiChevronDown />}
 							colorScheme="gray"
 							variant="outline"
@@ -53,13 +72,13 @@ const CartProductCard = ({
 							px={"10px"}
 						>
 							Qty : {Qty}
-						</Button>
+						</Button> */}
 					</HStack>
 				</Box>
 
 				{/* image box */}
 				<Box width={["40%", "20%"]}>
-					<Image mt={["-1rem", "0rem"]} borderRadius="6px" src={image} />
+					<Image mt={["-1rem", "0rem"]} borderRadius="6px" src={productImg} />
 				</Box>
 			</HStack>
 
@@ -73,6 +92,7 @@ const CartProductCard = ({
 					borderRight={"1px solid rgb(234, 234, 234)"}
 					py={6}
 					_hover={{ bg: "none" }}
+					onClick={() => removeFromCart(item.product)}
 				>
 					Remove
 				</Button>

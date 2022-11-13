@@ -39,6 +39,8 @@ const CartSchema =new mongoose.Schema({
     strickprice:String,
     tribeprice:String,
     seller:String,
+    size:String,
+    qty:String,
     user_id:String
 })
 const CartModel=mongoose.model("cartitem",CartSchema);
