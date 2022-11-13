@@ -9,11 +9,11 @@ import { MainRoutes } from "./Pages/MainRoutes.jsx";
 function App() {
 	return (
 		<div>
-			{/* <Navbar />
+			<Navbar />
 			<NavbarBottom />
-			<MainRoutes /> 
-			<Footer /> */}
-			<Cart />
+			<MainRoutes />
+			<Footer />
+			{/* <Cart /> */}
 		</div>
 	);
 }
