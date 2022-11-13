@@ -11,7 +11,7 @@ import SmileIcon from '../Icons/SmileIcon';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
 import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
-
+import {getLocalData} from "../../Utils/LocalStorage"
 
 export const Navbar = () => {
     
