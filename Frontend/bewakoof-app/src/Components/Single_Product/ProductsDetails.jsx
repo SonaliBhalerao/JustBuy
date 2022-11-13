@@ -11,7 +11,7 @@ export default function SingleProductDetial({data}){
     const AddCart=(data)=>{
         console.log("yless")
         const payload=data
-            return axios.post("http://localhost:4000/products/cart",payload).then((res)=>{
+            return axios.post("https://justbuybackend.onrender.com/products/cart",payload).then((res)=>{
                 console.log(res.data)
                 Toast({
                     title: 'ITEM ADDED TO BAG!!',

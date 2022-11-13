@@ -22,7 +22,7 @@ export const getWomenDataFailure = () => {
 }
 
 export const gettingWomenData = ()=> {
-    return axios.get('http://localhost:4000/products/women')
+    return axios.get('https://justbuybackend.onrender.com/products/women')
 }
 
 
@@ -45,7 +45,7 @@ export const getMenDataFailure = () => {
 }
 
 export const gettingMenData = ()=> {
-    return axios.get('http://localhost:4000/products/men')
+    return axios.get('https://justbuybackend.onrender.com/products/men')
 }
 
 
@@ -68,7 +68,7 @@ export const getMensSingleFailure=()=>{
 }
 
 export const FetchMensSingleData=(id)=>{
-return axios.get(`http://localhost:4000/products/men/${id}`)
+return axios.get(`https://justbuybackend.onrender.com/products/men/${id}`)
 }
 
 
@@ -92,7 +92,7 @@ export const getWomensSingleFailure=()=>{
 
 export const FetchWomensSingleData=(id)=>{
     console.log("FetchWomensSingleData ",id)
-    return axios.get(`http://localhost:4000/products/women/${id}`)
+    return axios.get(`https://justbuybackend.onrender.com/products/women/${id}`)
     }
 
 

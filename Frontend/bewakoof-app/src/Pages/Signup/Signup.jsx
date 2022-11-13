@@ -37,7 +37,7 @@ export const Signup = () => {
         console.log(email,password)
             axios({
             method: 'post',
-            url: 'http://localhost:4000/signup',
+            url: 'https://justbuybackend.onrender.com/signup',
             data: {
                 email: email,
                 password: password

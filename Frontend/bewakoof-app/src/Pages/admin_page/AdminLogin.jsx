@@ -23,7 +23,7 @@ export function AdminLogin() {
       
           axios({
           method: 'post',
-          url: 'http://localhost:4000/admin/login',
+          url: 'https://justbuybackend.onrender.com/admin/login',
           data: {
               email: email,
               password: password

@@ -44,7 +44,7 @@ const patchData = () => {
         strickprice:`₹${strickPrice}`,
         tribeprice:`₹${tribePrice}`
       }
-      let url = `http://localhost:4000/admin/edit/men/${id}`
+      let url = `https://justbuybackend.onrender.com/admin/edit/men/${id}`
       const config = {
           headers:{
               "Authorization": `Bearer ${tokenof}`

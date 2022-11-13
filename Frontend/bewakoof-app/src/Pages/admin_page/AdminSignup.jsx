@@ -31,7 +31,7 @@ export function AdminSignup() {
         console.log(email,password)
             axios({
             method: 'post',
-            url: 'http://localhost:4000/admin/signup',
+            url: 'https://justbuybackend.onrender.com/admin/signup',
             data: {
                 email: email,
                 password: password
