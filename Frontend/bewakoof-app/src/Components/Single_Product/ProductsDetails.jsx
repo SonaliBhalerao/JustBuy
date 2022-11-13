@@ -6,12 +6,12 @@ import { CiHeart } from 'react-icons/ci';
 import ProductOffer from "./Offers";
 import Size from "./Size";
 import { getLocalData } from "../../Utils/LocalStorage";
-import { useState } from "react";
+
 
 export default function SingleProductDetial({data}){
 
     const [token,setToken] = useState(getLocalData("userToken"))
-
+    const [size,setsize]=useState("");
     const Toast=useToast()
     
     const AddCart=(data)=>{

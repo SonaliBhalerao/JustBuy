@@ -14,7 +14,7 @@ import CartProductCard from "./CartProductCard";
 import Coupons from "./Coupons";
 import CartPriceSummary from "./CartPriceSummary";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	editCartProductFailure,
 	editCartProductRequest,
@@ -30,45 +30,46 @@ const CouponDescription = [
 	"Wohoo! Get a free gift worth Rs.399 on all prepaid orders Use Coupon Code- GETFREEGIFT.",
 ];
 
-const cart = [
-	{
-		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		finalprice: 649,
-		strickprice: 999,
-		size: "L",
-		Qty: 1,
-		productImg:
-			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
-	},
 
-	{
-		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
-		finalprice: 599,
-		strickprice: 899,
-		size: "L",
-		Qty: 1,
-		productImg:
-			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
-	},
-];
+// const cart = [
+// 	{
+// 		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
+// 		finalprice: 649,
+// 		strickprice: 999,
+// 		size: "L",
+// 		Qty: 1,
+// 		productImg:
+// 			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
+// 	},
+
+// 	{
+// 		description: "Men's Black Moon Knigh Typography Oversized T-Shirt",
+// 		finalprice: 599,
+// 		strickprice: 899,
+// 		size: "L",
+// 		Qty: 1,
+// 		productImg:
+// 			"https://images.bewakoof.com/t320/men-s-black-moon-knigh-typography-oversized-t-shirt-522527-1667510529-1.jpg",
+// 	},
+// ];
 
 const Cart = () => {
 	const dispatch = useDispatch();
-
+	const cartdata =  useSelector((store)=> store.AppReducer.Cart )
 	//GET REQUEST FOR FETCHING CART ITEM DATA
-	const getCartProducts = () => {
-		dispatch(getCartProductsRequest());
-		return axios
-			.get(`http://localhost:4000/products/cart`)
-			.then((res) => {
-				console.log(res);
-				dispatch(getCartProductsSuccess(res.data));
-			})
-			.catch((error) => {
-				console.log(error);
-				dispatch(getCartProductsFailure());
-			});
-	};
+	// const getCartProducts = () => {
+	// 	dispatch(getCartProductsRequest());
+	// 	return axios
+	// 		.get(`http://localhost:4000/products/cart`)
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 			dispatch(getCartProductsSuccess(res.data));
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 			dispatch(getCartProductsFailure());
+	// 		});
+	// };
 
 	//EDIT CART ITEMS
 
@@ -93,15 +94,15 @@ const Cart = () => {
 			});
 	};
 
-	const totalFinalPrice = cart.reduce(
+	const totalFinalPrice = cartdata.reduce(
 		(previousValue, currentValue) =>
 			previousValue + Number(currentValue.finalprice),
 		0
 	);
 
-	const totalStrickPrice = cart.reduce(
+	const totalStrickPrice = cartdata.reduce(
 		(previousValue, currentValue) =>
-			previousValue + Number(currentValue.strickprice),
+			previousValue + Number(currentValue.strickprice.slice(1,currentValue.strickprice.length-1)),
 		0
 	);
 
@@ -125,9 +126,9 @@ const Cart = () => {
 	];
 
 	// useEffect for fetching cart item for the mounting phase
-	useEffect(() => {
-		getCartProducts();
-	}, []);
+	// useEffect(() => {
+	// 	getCartProducts();
+	// }, []);
 
 	return (
 		<Box width={"100%"}>
@@ -136,7 +137,7 @@ const Cart = () => {
 					<Heading fontSize={"17px"}>My Bag</Heading>
 
 					{/* cart.length - no of items in the cart */}
-					<Text fontSize={"17px"}>{`${cart.length} item`}</Text>
+					<Text fontSize={"17px"}>{`${cartdata.length} item`}</Text>
 				</HStack>
 
 				{/* left and right */}
@@ -160,8 +161,8 @@ const Cart = () => {
 
 						{/* products */}
 
-						{cart.map((item) => (
-							<CartProductCard {...item} />
+						{cartdata?.map((item) => (
+							<CartProductCard {...item}  />
 						))}
 					</Box>
 
