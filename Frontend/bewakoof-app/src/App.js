@@ -1,4 +1,5 @@
 import React from "react";
+import Cart from "./Components/Cart/Cart";
 
 import { Footer } from "./Components/footer/Footer";
 import { Navbar } from "./Components/Navbar/Navbar";
@@ -10,8 +11,9 @@ function App() {
 		<div>
 			<Navbar />
 			<NavbarBottom />
-			<MainRoutes /> 
+			<MainRoutes />
 			<Footer />
+			{/* <Cart /> */}
 		</div>
 	);
 }
