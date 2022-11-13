@@ -5,26 +5,30 @@ import { CgShoppingBag } from 'react-icons/cg';
 import { CiHeart } from 'react-icons/ci';
 import ProductOffer from "./Offers";
 import Size from "./Size";
+import { getLocalData } from "../../Utils/LocalStorage";
+import { useState } from "react";
 
 export default function SingleProductDetial({data}){
-    const [size,setsize]=useState("");
-    console.log("size",size)
-    // console.log("datamyy",data)
+
+    const [token,setToken] = useState(getLocalData("userToken"))
+
     const Toast=useToast()
+    
     const AddCart=(data)=>{
         console.log("data",data._id);
         delete data._id;
         data.size=size;
         data.qty=1;
-        console.log(data);
+
         const payload=data
-            return axios.post("https://justbuybackend.onrender.com/products/cart",payload).then((res)=>{
+            return axios.post("https://justbuybackend.onrender.com/products/cart",payload,{'headers' : { 'Authorization' : 'Bearer'+' '+token}}).then((res)=>{
                 console.log(res.data)
+
                 Toast({
-                    title: 'ITEM ADDED TO BAG!!',
-                    description: 'Successfull',
-                    status: 'success',
-                    duration: 9000,
+                    title: res.data,
+                    description: `${res.data === "Product Already In The Cart" ? "error" : "success"}`,
+                    status: `${res.data === "Product Already In The Cart" ? "error" : "success"}`,
+                    duration: 5000,
                     isClosable: true,
                     position:"top"
                   })
@@ -35,14 +39,14 @@ export default function SingleProductDetial({data}){
                     title: 'YOU ARE NOT AUTHORIZED!!',
                     description: 'Please Login',
                     status: 'error',
-                    duration: 9000,
+                    duration: 5000,
                     isClosable: true,
                     position:"top"
                   })
             })
     }
     return(
-        <Box maxH={"550px"} overflow={"scroll"} width={"100%"}>
+        <Box maxH={"80vh"} overflow={"scroll"} width={"100%"}>
             <Text fontSize={"22px"} fontWeight={"500"} color={"rgb(79, 83, 98)"}>JustBuy</Text>
             <Text font-size={"14px"} fontWeight={"500"} color={"RGBA(0, 0, 0, 0.48)"}  maxW={"90%"} marginTop={"10px"}>{data.description}</Text>
 

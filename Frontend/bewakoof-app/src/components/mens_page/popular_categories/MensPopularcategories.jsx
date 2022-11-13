@@ -1,8 +1,11 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const MensPopularcategories = () => {
-
+  
+  const navigate = useNavigate()
+  
   const images = [
     "https://images.bewakoof.com/uploads/grid/app/category-box-new-1-1665646057.jpg",
     "https://images.bewakoof.com/uploads/grid/app/category-box-new-fullsleeves-men-1665149767.jpg",
@@ -22,7 +25,7 @@ export const MensPopularcategories = () => {
     <Box display={"grid"} gridTemplateColumns={"repeat(6,1fr)"} >
       {
         images.map((e) => {
-          return <Box key={e} _hover={{cursor:"pointer"}} >
+          return <Box key={e} _hover={{cursor:"pointer"}} onClick={()=> { navigate("/men")}}  >
             <img src={e} alt="" srcset="" />
           </Box>
         })

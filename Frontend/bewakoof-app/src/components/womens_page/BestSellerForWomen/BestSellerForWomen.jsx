@@ -2,11 +2,12 @@ import { Box, CircularProgress, Flex, Image, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useNavigate } from 'react-router-dom';
 
 export const BestSellerForWomen = () => {
 
   const [data,setData] = useState([])
-
+  const navigate = useNavigate()
   useEffect(() => {
     fetch('https://justbuybackend.onrender.com/products/women', {
       method: 'GET', 
@@ -57,7 +58,8 @@ export const BestSellerForWomen = () => {
                           key={e} 
                           _hover={{
                             cursor:"pointer",
-                          }} 
+                          }}
+                          onClick={()=> { navigate(`/womens-home/${e._id}`) }} 
                         >
                           <Image 
                             src={e.productImg} 
