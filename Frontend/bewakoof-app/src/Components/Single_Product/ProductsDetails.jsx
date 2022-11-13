@@ -1,15 +1,22 @@
 import { Box, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
 import { CgShoppingBag } from 'react-icons/cg';
 import { CiHeart } from 'react-icons/ci';
 import ProductOffer from "./Offers";
 import Size from "./Size";
 
 export default function SingleProductDetial({data}){
+    const [size,setsize]=useState("");
+    console.log("size",size)
     // console.log("datamyy",data)
     const Toast=useToast()
     const AddCart=(data)=>{
-        console.log("yless")
+        console.log("data",data._id);
+        delete data._id;
+        data.size=size;
+        data.qty=1;
+        console.log(data);
         const payload=data
             return axios.post("https://justbuybackend.onrender.com/products/cart",payload).then((res)=>{
                 console.log(res.data)
@@ -64,7 +71,7 @@ export default function SingleProductDetial({data}){
 
              <Text fontSize={"16px"} fontWeight={"650"}>SELECT SIZE</Text>
               
-              <Size/>
+              <Size setsize={setsize} />
 
               <br />
               <Flex gap={"10px"}>
