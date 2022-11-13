@@ -7,14 +7,18 @@ import {
     AccordionPanel,
     AccordionIcon,
   } from '@chakra-ui/react'
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gettingWomenData, getWomenDataFailure, getWomenDataRequest, getWomenDataSuccess } from "../../Redux/AppReducer/action";
 import { categoryData, rating, sortBy, neck, sleeve, fit, design, color, brand, size, discount } from "../Men/AccordianItems";
+import { useNavigate } from "react-router-dom";
 
 
 const WomensProductPage = () =>{
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    // const [sportList, setSportList] = useState([]);
+    // const [selectedCategory, setSelectedCategory] = useState();
         
        // store
     const {getWomenData, isLoading, isError} = useSelector((store) =>{
@@ -25,6 +29,16 @@ const WomensProductPage = () =>{
         }
       }
     )
+
+   // filter
+//    useEffect(() => {
+//     setSportList(getWomenData);
+//   }, []);
+
+    useEffect(()=>{
+        handleWomenData()
+    },[])
+
 
     // handleMenData function
     const handleWomenData = () => {
@@ -37,11 +51,21 @@ const WomensProductPage = () =>{
         .catch((e)=> dispatch(getWomenDataFailure(e)))
     }
 
-    useEffect(()=>{
-        handleWomenData()
-    },[])
+    // function getFilteredList() {
+    //     // Avoid filter when selectedCategory is null
+    //     if (!selectedCategory) {
+    //       return sportList;
+    //     }
+    //     return sportList.filter((item) => item.category === selectedCategory);
+    //   }
 
-    console.log("final", getWomenData );
+    //   var filteredList = useMemo(getFilteredList, [selectedCategory, sportList]);
+
+    //   function handleCategoryChange(event) {
+    //     setSelectedCategory(event.target.value);
+    //   }
+
+ 
 
     return (
         // main box
@@ -50,21 +74,20 @@ const WomensProductPage = () =>{
                 <Box >
                   <Image height={["150px", "200px", "250px"]} width={["100%"]} display={{ sm:"block",base:"none"}} alignItems src="https://images.bewakoof.com/uploads/category/desktop/INSIDE-BANNER_DESKTOP_FREEBIE-1667998388.jpg"></Image>
                 </Box>
-                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide'>Women Clothing (50)</Text>
+                <Text fontWeight='bold' fontSize={['xl', '2xl', '2xl', '2xl']} textAlign={{base:"center", md:"center", lg:"left"}} mt={35} letterSpacing='wide' w={"230px"} borderBottom={"2px solid rgb(253,216,53)"} >Men Clothing ({getWomenData.length})</Text>
 
                 {/* products and filter flex */}
                 <Flex direction={{base:"column", lg:"row", md:"row"}} mt={10} mb={6} gap={2}>
 
                     {/* left box */}
-                    <Box width={"30%"} p={5} display={{ sm:"block",base:"none"}} mt={-6}>
-                        <Flex gap={"50%"}  height={"20px"} flexDirection={"row"} mb={5}>
+                    <Box width={"40%"} p={5} display={{ sm:"block",base:"none"}} mt={-6}>
+                        <Flex gap={"40%"}  height={"20px"} flexDirection={"row"} mb={5}>
                             <Text fontSize={"13px"} color={"#969696"} textAlign="left" ml="16px" fontWeight="bold">FILTERS</Text>
-                            <Text fontSize={"13px"} color={"#73A2A2"} ml="16px" fontWeight="semibold" ><a>Clear All</a></Text>  
+                            <Text fontSize={"13px"} color={"#73A2A2"} ml="16px" fontWeight="semibold" cursor={"pointer"}  >Clear All</Text>  
                         </Flex>
 
-                        <Accordion defaultIndex={[0]} allowMultiple>
+                        <Accordion  allowMultiple cursor={"pointer"}>
                             {/* category */}
-                             {/* category */}
                              <AccordionItem>
                                 <h2>
                                 <AccordionButton>
@@ -72,8 +95,8 @@ const WomensProductPage = () =>{
                                     <AccordionIcon w={"45px"} color={"#5D5D5D"}/>
                                 </AccordionButton>
                                 </h2>
-                                {categoryData.map((el)=> {
-                                    return <AccordionPanel onClick={(e)=> handleCategory(e) } pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                {fit.map((el)=> {
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -86,7 +109,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {size.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -99,7 +122,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {brand.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
                             
@@ -112,7 +135,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {color.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -125,7 +148,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {design.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -137,8 +160,8 @@ const WomensProductPage = () =>{
                                     <AccordionIcon w={"45px"} color={"#5D5D5D"}/>
                                 </AccordionButton>
                                 </h2>
-                                {fit.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                {categoryData.map((el)=> {
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -151,7 +174,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {sleeve.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -164,7 +187,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {neck.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
         
@@ -177,7 +200,7 @@ const WomensProductPage = () =>{
                                  </AccordionButton>
                                  </h2>
                                  {categoryData.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                              </AccordionItem>
 
@@ -190,7 +213,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {rating.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -203,7 +226,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {discount.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -216,7 +239,7 @@ const WomensProductPage = () =>{
                                 </AccordionButton>
                                 </h2>
                                 {sortBy.map((el)=> {
-                                    return <AccordionPanel onClick={()=>handleCategory()} pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
+                                    return <AccordionPanel pb={1} fontSize={"13px"} ml="22px" textAlign="left"  color={"#6C6C6C"}> {el}</AccordionPanel>
                                 })}
                             </AccordionItem>
 
@@ -228,9 +251,9 @@ const WomensProductPage = () =>{
                         <SimpleGrid columns={[1, 2, 2, 3]} spacing={5} height={"670px"} direction={{base:"column", lg:"row"}} overflow={"scroll"} >
                                 {getWomenData.map((e)=>{
                                     return (
-                                        <Box className="mapBox" p={1}>
+                                        <Box className="mapBox" p={1} cursor={"pointer"} onClick={()=> { navigate(`/women/${e._id}`)}}>
                                             <Image src={e.productImg} h={"350px"} w={"100%"}></Image>
-                                            <Text fontWeight={"semibold"} color={"#4F5362"} fontSize={"13px"} letterSpacing={"wide"}>Bewakoof</Text>
+                                            <Text fontWeight={"semibold"} color={"#4F5362"} fontSize={"13px"} letterSpacing={"wide"}>JustBuy</Text>
                                             <Text fontWeight={"normal"} color={"#949494"} fontSize={"11px"} letterSpacing={"wide"}>{e.description}</Text>
                                             <Flex gap={1.5} mb={1}>
                                                 <Text fontWeight={"bold"} color={"black"} fontSize={"16px"} letterSpacing={"wide"}>₹{e.finalprice}</Text>

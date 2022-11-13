@@ -11,7 +11,7 @@ export const AdminMensSection = () => {
 const [data,setData] = useState([])
 
     const getData = ()=> {
-        fetch('http://localhost:4000/products/men', {
+        fetch('https://justbuybackend.onrender.com/products/men', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'

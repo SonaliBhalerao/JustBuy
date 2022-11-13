@@ -137,7 +137,7 @@ AllProducts.post("/women",async(req,res)=>{
 
 // ADDING ITEMS TO CART WITH REFERENCE TO USER_ID
 AllProducts.post("/cart", auth,  async(req,res)=>{
-    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller,user}=req.body;
+    const {productImg,description,finalprice,strickprice,tribeprice,category,rating,seller,size,qty,user}=req.body;
     console.log(description,finalprice,user)
     const AlreadyPresent= await CartModel.find({user_id:user,description:description})
     if(AlreadyPresent.length>0){
@@ -153,7 +153,8 @@ AllProducts.post("/cart", auth,  async(req,res)=>{
      category:category,
      rating:rating,
      seller: seller,
-
+     size:size,
+     qty:qty,
     user_id:user})
    await newCartItem.save();
    console.log(newCartItem);

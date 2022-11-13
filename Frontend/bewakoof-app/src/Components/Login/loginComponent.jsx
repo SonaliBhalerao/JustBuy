@@ -19,7 +19,7 @@ export default function LoginComponent(){
         console.log(email, password);
         axios({
             method: 'post',
-            url: 'http://localhost:4000/login',
+            url: 'https://justbuybackend.onrender.com/login',
             data: {
                 email: email,
                 password: password

@@ -8,7 +8,7 @@ export const ClearenceZoneWomen = () => {
   const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/women_asc', {
+    fetch('https://justbuybackend.onrender.com/products/women_asc', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
