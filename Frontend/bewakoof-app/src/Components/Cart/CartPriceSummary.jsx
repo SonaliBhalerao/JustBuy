@@ -1,8 +1,7 @@
 import { HStack, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 
-const CartPriceSummary = (data) => {
-	console.log("data:", data);
+const CartPriceSummary = ({ data }) => {
 	return (
 		<>
 			{data.map((item, i) => (

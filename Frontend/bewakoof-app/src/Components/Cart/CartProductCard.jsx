@@ -1,25 +1,26 @@
 import { Box, Button, HStack, Text, Image } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
+
 import CartQuantityButton from "./CartQuantityButton";
 import CartSizeButton from "./CartSizeButton";
 
 const CartProductCard = ({
+	_id,
 	description,
 	finalprice,
 	strickprice,
 	size,
 	Qty,
 	productImg,
+	removeFromCartHandler,
 }) => {
 	const dispatch = useDispatch();
 
-	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id));
-	};
-
-	const saved = Number(strickprice.slice(1,strickprice.length-1)) - Number(finalprice);
+	const saved =
+		Number(strickprice.slice(1, strickprice.length - 1)) - Number(finalprice);
 
 	return (
 		<Box border="1px solid rgb(234, 234, 234)" borderRadius={"5px"} mt={5}>
@@ -51,28 +52,9 @@ const CartProductCard = ({
 						{`You saved ₹${saved}!`}
 					</Text>
 					<HStack spacing={"20px"} mt={5}>
-						{/* <Button
-							rightIcon={<FiChevronDown />}
-							colorScheme="gray"
-							variant="outline"
-							height={"30px"}
-							px={"10px"}
-						>
-							Size : {size}
-						</Button> */}
 						<CartSizeButton size={size} />
 
 						<CartQuantityButton qty={Qty} />
-
-						{/* <Button
-							rightIcon={<FiChevronDown />}
-							colorScheme="gray"
-							variant="outline"
-							height={"30px"}
-							px={"10px"}
-						>
-							Qty : {Qty}
-						</Button> */}
 					</HStack>
 				</Box>
 
@@ -92,7 +74,7 @@ const CartProductCard = ({
 					borderRight={"1px solid rgb(234, 234, 234)"}
 					py={6}
 					_hover={{ bg: "none" }}
-					onClick={() => removeFromCart(item.product)}
+					onClick={() => removeFromCartHandler(_id)}
 				>
 					Remove
 				</Button>

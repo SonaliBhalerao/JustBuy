@@ -16,6 +16,9 @@ import CartPriceSummary from "./CartPriceSummary";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
+	deleteCartProductFailure,
+	deleteCartProductRequest,
+	deleteCartProductSuccess,
 	editCartProductFailure,
 	editCartProductRequest,
 	editCartProductSuccess,
@@ -24,12 +27,12 @@ import {
 	getCartProductsSuccess,
 } from "../../Redux/AppReducer/action";
 import Address from "../Address/Address";
+import { getLocalData } from "../../Utils/LocalStorage";
 
 const CouponDescription = [
 	"Whistles! Get extra 10% cashback on all prepaid orders above Rs.499. Use Code - PREP10.",
 	"Wohoo! Get a free gift worth Rs.399 on all prepaid orders Use Coupon Code- GETFREEGIFT.",
 ];
-
 
 // const cart = [
 // 	{
@@ -55,7 +58,7 @@ const CouponDescription = [
 
 const Cart = () => {
 	const dispatch = useDispatch();
-	const cartdata =  useSelector((store)=> store.AppReducer.Cart )
+	const cartdata = useSelector((store) => store.AppReducer.Cart);
 	//GET REQUEST FOR FETCHING CART ITEM DATA
 	// const getCartProducts = () => {
 	// 	dispatch(getCartProductsRequest());
@@ -94,6 +97,31 @@ const Cart = () => {
 			});
 	};
 
+	// Delete single item from cart
+
+	const removeFromCartHandler = (id) => {
+		console.log("hello", id);
+		const afterDelete = cartdata.filter((item) => item._id !== id);
+
+		const Token = getLocalData("userToken");
+
+		dispatch(deleteCartProductRequest());
+
+		return axios
+			.delete(`https://justbuybackend.onrender.com/products/cart/${id}`, {
+				headers: {
+					"Content-Type": "application/json",
+					authorization: "Bearer" + " " + Token,
+				},
+			})
+			.then((res) => {
+				dispatch(deleteCartProductSuccess(afterDelete));
+			})
+			.catch((error) => {
+				dispatch(deleteCartProductFailure());
+			});
+	};
+
 	const totalFinalPrice = cartdata.reduce(
 		(previousValue, currentValue) =>
 			previousValue + Number(currentValue.finalprice),
@@ -102,7 +130,10 @@ const Cart = () => {
 
 	const totalStrickPrice = cartdata.reduce(
 		(previousValue, currentValue) =>
-			previousValue + Number(currentValue.strickprice.slice(1,currentValue.strickprice.length-1)),
+			previousValue +
+			Number(
+				currentValue.strickprice.slice(1, currentValue.strickprice.length - 1)
+			),
 		0
 	);
 
@@ -148,7 +179,8 @@ const Cart = () => {
 						<HStack
 							px={3}
 							py={4}
-							bg={"#fcffee"}a
+							bg={"#fcffee"}
+							a
 							fontSize={"13px"}
 							borderRadius="2px"
 						>
@@ -162,7 +194,10 @@ const Cart = () => {
 						{/* products */}
 
 						{cartdata?.map((item) => (
-							<CartProductCard {...item}  />
+							<CartProductCard
+								{...item}
+								removeFromCartHandler={removeFromCartHandler}
+							/>
 						))}
 					</Box>
 
@@ -209,18 +244,7 @@ const Cart = () => {
 								<Text fontWeight={"bold"}>PRICE SUMMARY</Text>
 							</Box>
 
-							{priceSummary.map((item, i) => (
-								<HStack px={5} py={1.5} w={"100%"}>
-									<Text>{item.left} </Text>
-									<Spacer />
-
-									{i === 1 ? (
-										<Text>{item.right} </Text>
-									) : (
-										<Text>₹ {item.right} </Text>
-									)}
-								</HStack>
-							))}
+							<CartPriceSummary data={priceSummary} />
 
 							<Box mt={2} px={5}>
 								<Box
