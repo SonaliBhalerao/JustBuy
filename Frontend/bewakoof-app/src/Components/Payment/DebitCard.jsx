@@ -1,5 +1,6 @@
 import { Box, Button, ChakraProvider, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, HStack, Image, Input,  Stack, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { theme } from '../Address/ThemeLabel';
 
 
@@ -10,7 +11,7 @@ export const DebitCard = () => {
 
     const toast = useToast()
     const [name,setName] = useState("")
-   
+   const navigate = useNavigate()
     const [cardNum,setcardNum] = useState("")
     const [cardError,setCardError] = useState(false)
     const [cardErrorMsg,setCardErrorMsg] = useState("Card Number is required.")
@@ -103,6 +104,7 @@ const onsubmit = () => {
             duration: 3000,
             isClosable: true,
           })
+          navigate("/ordersuccess")
     }
 
 }
