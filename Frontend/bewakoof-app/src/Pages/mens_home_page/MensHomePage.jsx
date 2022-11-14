@@ -34,7 +34,9 @@ export const MensHomePage = () => {
 				margin={"auto"}
 				textAlign={"center"}
 				fontFamily={"Montserrat"}
-				fontWeight={500}
+				fontWeight={600}
+				fontSize={{ base:'16px', sm: '16px', md: '18px', lg: '20px', xl:' 24px', '2xl': '26px'}}
+				textDecoration={"underline"}
 			>
 				POPULAR CATEGORIES
 			</Text>
@@ -44,8 +46,10 @@ export const MensHomePage = () => {
 				margin={"auto"}
 				textAlign={"center"}
 				fontFamily={"Montserrat"}
-				fontWeight={500}
-				mb={"10px"}
+				fontWeight={600}
+				fontSize={{ base:'16px', sm: '16px', md: '18px', lg: '20px', xl:' 24px', '2xl': '26px'}}
+				textDecoration={"underline"}
+				my={"10px"}
 			>
 				DISCOUNT PE DISCOUNT
 			</Text>
@@ -55,7 +59,10 @@ export const MensHomePage = () => {
 				margin={"auto"}
 				textAlign={"center"}
 				fontFamily={"Montserrat"}
-				fontWeight={500}
+				fontWeight={600}
+				fontSize={{ base:'16px', sm: '16px', md: '18px', lg: '20px', xl:' 24px', '2xl': '26px'}}
+				textDecoration={"underline"}
+				my={"10px"}
 			>
 				BEST SELLER FOR MEN
 			</Text>
@@ -89,7 +96,10 @@ export const MensHomePage = () => {
 				margin={"auto"}
 				textAlign={"center"}
 				fontFamily={"Montserrat"}
-				fontWeight={500}
+				fontWeight={600}
+				fontSize={{ base:'16px', sm: '16px', md: '18px', lg: '20px', xl:' 24px', '2xl': '26px'}}
+				textDecoration={"underline"}
+				my={"10px"}
 			>
 				CLEARANCE ZONE
 			</Text>
@@ -99,8 +109,10 @@ export const MensHomePage = () => {
 				margin={"auto"}
 				textAlign={"center"}
 				fontFamily={"Montserrat"}
-				fontWeight={500}
-				mb={"10px"}
+				fontWeight={600}
+				fontSize={{ base:'16px', sm: '16px', md: '18px', lg: '20px', xl:' 24px', '2xl': '26px'}}
+				textDecoration={"underline"}
+				my={"10px"}
 			>
 				THE STOOPID COLLECTION
 			</Text>

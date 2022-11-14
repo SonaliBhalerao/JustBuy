@@ -11,13 +11,14 @@ import SmileIcon from '../Icons/SmileIcon';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
 import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
+import { getLocalData, SaveTheToken } from '../../Utils/LocalStorage';
 
 
 
 export const Navbar = () => {
     
     const { isOpen, onOpen,onClose } = useDisclosure();
-
+    const token = getLocalData("userToken")
 return (
     <Box 
         borderBottom={"1px solid lightgray"}
@@ -60,12 +61,12 @@ return (
                     <DrawerBody p={"0px"} bg={"rgb(243,243,243)"} >
                         <Box display={"flex"} flexDirection={"column"} gap={"14px"}  >
                             
-                            <Box fontFamily={"Montserrat"} fontSize="12px"  p={"6px"} bg={"white"} px={"16px"}  >
+                            <Box fontFamily={"Montserrat"} fontSize="12px"  p={"6px"} bg={"white"} px={"16px"}   >
                                 <VStack textAlign={"left"} justifyContent={"start"} alignItems="flex-start" >
                                     <Heading fontFamily={"Montserrat"} fontSize="12px" color={"rgba(0, 0, 0, 0.3)"} fontWeight={600} mb={"4px"} >
                                         SHOP IN
                                     </Heading>
-                                    <Link border={"1px solid black"} to={"/men"} mb={"10px"} >
+                                    <Link color='red' _hover={{cursor:"pointer" , backgroundColor:"cyan"}} to={"/men"} mb={"10px"} >
                                         Men
                                     </Link>
                                     <Link mb={"10px"} to={"/women"} >
@@ -134,7 +135,7 @@ return (
                                     <Link mb={"10px"} >
                                     Blog
                                     </Link>
-                                    <Link mb={"10px"} >
+                                    <Link onClick={ () => {localStorage.removeItem("userToken")} } mb={"10px"} >
                                         Logout   
                                     </Link>
                                 </VStack>
@@ -177,23 +178,23 @@ return (
                             <Link to="/cart" >  <BsBag color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"}  /> </Link>
                         </Button>
 
-                         <Menu >
-                        <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
-                            <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
-                        </MenuButton>
-                        <MenuList>
-                            <MenuItem>Account</MenuItem>
-                            <MenuItem>Wishlist</MenuItem>
-                            <MenuItem>Orders</MenuItem>
-                            <MenuItem>Wallet</MenuItem>
-                            <MenuItem onClick={ () => {SaveTheToken("userToken","")} } >Logout</MenuItem>
-                        </MenuList>
-                        </Menu>
-                           
-                            <Link to="/login" >
+                        { token == null  ? <Link to="/login" >
                                 <Button  fontFamily={"Montserrat"} fontSize={"14px"} >log-in</Button>
                             </Link>
-                        
+                        :
+                        <Menu >
+                            <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
+                                <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Account</MenuItem>
+                                <MenuItem>Wishlist</MenuItem>
+                                <MenuItem>Orders</MenuItem>
+                                <MenuItem>Wallet</MenuItem>
+                                <MenuItem onClick={ () => {localStorage.removeItem("userToken")} } >Logout</MenuItem>
+                            </MenuList>
+                        </Menu>   
+                        }                        
 
                     </Box>
         
@@ -222,8 +223,8 @@ return (
 );
 }
   
-  const DesktopNav = (token) => {
-
+  const DesktopNav = () => {
+    const token = getLocalData("userToken")
     return (
         <HStack 
             display={"flex"} 
@@ -343,6 +344,10 @@ return (
                     justifyContent={"space-between"} 
                     alignItems={"center"}
                 >
+                    { token == null  ? <Link to="/login" >
+                                <Button  fontFamily={"Montserrat"} fontSize={"14px"} >log-in</Button>
+                            </Link>
+                        :
                     <Menu >
                         <MenuButton _hover={{color:"rgb(253,216,53)"}} as={Button} colorScheme={"white"} p={"0px"} m={"0px"} >
                             <BsPerson color={"rgb(137,149,168)"}  fontSize={"22px"} />
@@ -352,9 +357,11 @@ return (
                             <MenuItem>Wishlist</MenuItem>
                             <MenuItem>Orders</MenuItem>
                             <MenuItem>Wallet</MenuItem>
-                            <MenuItem>Logout</MenuItem>
+                            <MenuItem onClick={ () => {localStorage.removeItem("userToken")} } >Logout</MenuItem>
                         </MenuList>
                     </Menu>
+                            
+                    }
 
                     <Button 
                         as={Button} 
@@ -363,7 +370,7 @@ return (
                         colorScheme={"white"} 
                         p={"10px"} m={"0px"} 
                         onClick={ () => {
-                            
+                            console.log(token)
                         }}
                     >
                         <BsHeart color={"rgb(137,149,168)"} fontWeight={800} fontSize={"18px"} />
