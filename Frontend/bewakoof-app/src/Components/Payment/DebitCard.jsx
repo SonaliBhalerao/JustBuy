@@ -1,5 +1,6 @@
-import { Box, Button, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, HStack, Input,  Stack, useToast } from '@chakra-ui/react';
+import { Box, Button, ChakraProvider, Flex, FormControl, FormErrorMessage, FormHelperText, FormLabel, HStack, Image, Input,  Stack, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react'
+import { theme } from '../Address/ThemeLabel';
 
 
 
@@ -107,33 +108,38 @@ const onsubmit = () => {
 }
    
   return (
-    <Box> 
-            <Stack>
+    <ChakraProvider theme={theme}>
+    <Box  margin={"auto"}> 
+            <Stack padding={"1rem"}>
                     <Box w='100%' >
-
-                        <Flex justifyContent='flex-start' gap={"30px"}  >
-                            <img width={"5%"} src="https://images.bewakoof.com/web/ic-visa-gray-payment-v1.jpg" />
-                            <img width={"5%"} src="https://images.bewakoof.com/web/ic-master-card-payment-v1.jpg" />
-                            <img width={"5%"} src="https://images.bewakoof.com/web/ic-rupay-payment-v1.jpg" />
-                            <img width={"5%"} src="https://images.bewakoof.com/web/ic-american-express-payment-v1.jpg"/>
+                        <Flex justifyContent='flex-start' gap={"30px"} width={"100%"} >
+                            <Image height={"20px"} src="https://images.bewakoof.com/web/ic-visa-gray-payment-v1.jpg" />
+                            <Image height={"20px"}   src="https://images.bewakoof.com/web/ic-master-card-payment-v1.jpg" />
+                            <Image height={"20px"}  src="https://images.bewakoof.com/web/ic-rupay-payment-v1.jpg" />
+                            <Image height={"20px"}   src="https://images.bewakoof.com/web/ic-american-express-payment-v1.jpg"/>
                         </Flex>
 
                     </Box>
 
                     <Box w='100%'   >
 
-                        <Box  >
-                            <FormControl isInvalid={cardError}>
-                                <FormLabel fontFamily={"Montserrat"} fontSize={"16px"} >Card Number</FormLabel>
+                        <Box  marginTop={"30px"}>
+                            <FormControl isInvalid={cardError} variant="floating" isRequired>
                                 <Input  
-                                    variant='flushed' 
-                                    _focus={{border:'red'}} 
-                                    placeholder={"Card Number"} 
-                                    type='number'
+                                 variant={"flushed"}
+                                  placeholder=" "
+                                  size="lg"
+                                  type="number"
                                     value={cardNum}
-                                    onChange={(e) => {setcardNum(e.target.value)}}
                                     minLength={11} 
+                                    onChange={(e) => {setcardNum(e.target.value)}}
                                     />
+                                    <FormLabel
+										fontSize={"1rem"}
+                                        fontFamily={"Montserrat"}
+									>
+										Card Number
+									</FormLabel>
                                 {!cardError ? (
                                     <FormHelperText>
                                     
@@ -144,19 +150,25 @@ const onsubmit = () => {
                                 </FormControl>
                         </Box>
 
-                        <Flex justifyContent={"space-between"} alignItems={"center"} gap={"20px"} >
+                        <Flex justifyContent={"space-between"} alignItems={"center"} gap={"20px"} marginTop={"30px"}>
                             <Box width={"50%"}  >
                                 <HStack>
-                                <FormControl isInvalid={validError}>
-                                    <FormLabel fontFamily={"Montserrat"} fontSize={"16px"} >valid through</FormLabel>
+                                <FormControl isInvalid={validError} variant="floating" isRequired>
                                     <Input  
-                                        variant='flushed' 
-                                        placeholder={"valid through (MM/YY)"} 
-                                        type='number'
+                                      variant='flushed'
+                                       placeholder=" "
+                                       type="number"
                                         value={valid}
                                         onChange={(e) => {setvalid(e.target.value)}}
 
                                         />
+                                        <FormLabel
+										fontSize={"14px"}
+										
+                                        fontFamily={"Montserrat"}
+									>
+										Valid through(MM/YY)
+									</FormLabel>
                                     {!validError ? (
                                         <FormHelperText>
                                         
@@ -170,11 +182,11 @@ const onsubmit = () => {
                             
                             <Box width={"50%"}  >
                                 <HStack>
-                                    <FormControl isInvalid={cvvError}>
+                                    <FormControl isInvalid={cvvError} variant="floating" isRequired>
                                         <FormLabel fontFamily={"Montserrat"} fontSize={"16px"} >cvv</FormLabel>
                                         <Input  
                                             variant='flushed' 
-                                            placeholder={"cvv"} 
+                                            placeholder={""} 
                                             type='number'
                                             value={cvv}
                                             onChange={(e) => {setCvv(e.target.value)}}
@@ -192,12 +204,12 @@ const onsubmit = () => {
                             </Box>
                         </Flex>
                         
-                        <Box  >
-                            <FormControl>
+                        <Box  marginTop={"30px"}>
+                            <FormControl variant="floating" isRequired>
                                 <FormLabel fontFamily={"Montserrat"} fontSize={"16px"} >Name on card</FormLabel>
                                 <Input  
                                     variant='flushed' 
-                                    placeholder={"Name of card holder"} 
+                                    placeholder={""} 
                                     type='text'
                                     value={name}
                                     onChange={(e) => {setName(e.target.value)}}
@@ -219,12 +231,13 @@ const onsubmit = () => {
                                 }}
 
                                 >
-                                    {`PAY INR: ${"12"}`}
+                                    {"ADD PAYMENT"}
                             </Button>
                         </Flex>
 
                     </Box>
             </Stack>
         </Box >
+        </ChakraProvider>
   )
 }

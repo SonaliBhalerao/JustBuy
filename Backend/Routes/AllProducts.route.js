@@ -185,7 +185,7 @@ AllProducts.delete("/cart",auth,async(req,res)=>{
 
 // DELETE SINGLE ITEMS WITH RESPECT USER_ID IF THE USRE REMOVES IT FROM CART
 AllProducts.delete("/cart/:deleteid",auth,async(req,res)=>{
-    const payload=req.params.deleteid;
+    const payload=req.body._id;
     const payload1= req.body.user;
      const mydelete= await CartModel.deleteMany({_id:payload,user_id:payload1});
      res.send(mydelete);
