@@ -12,6 +12,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSistrix } from "react-icons/fa";
 import { BsBag, BsHeart, BsPerson } from "react-icons/bs";
 import { getLocalData, SaveTheToken } from '../../Utils/LocalStorage';
+import { useEffect } from 'react';
 
 
 
@@ -19,6 +20,8 @@ export const Navbar = () => {
     
     const { isOpen, onOpen,onClose } = useDisclosure();
     const token = getLocalData("userToken")
+  
+
 return (
     <Box 
         borderBottom={"1px solid lightgray"}
@@ -75,7 +78,7 @@ return (
                                     <Link mb={"10px"} to={"/men"} >
                                         Design of the Day   
                                     </Link>
-                                    <Link mb={"10px"} to={"/women"} >
+                                    <Link border={"1px solid black"} mb={"10px"} to={"/women"} >
                                         Mobile Covers
                                     </Link>
                                 </VStack>
@@ -224,6 +227,12 @@ return (
 }
   
   const DesktopNav = () => {
+
+    
+
+ 
+
+
     const token = getLocalData("userToken")
     return (
         <HStack 
