@@ -223,6 +223,7 @@ AllProducts.delete("/cart", auth, async (req, res) => {
 });
 
 // DELETE SINGLE ITEMS WITH RESPECT USER_ID IF THE USRE REMOVES IT FROM CART
+
 AllProducts.delete("/cart/:deleteid", auth, async (req, res) => {
 	const payload = req.params.deleteid;
 	const payload1 = req.body.user;

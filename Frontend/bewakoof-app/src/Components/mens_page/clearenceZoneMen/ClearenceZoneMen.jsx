@@ -43,7 +43,7 @@ console.log(data)
   };
 
   return (
-    <Box minHeight={"300px"} >
+    <Box minHeight={"150px"}  >
        { data.length>0 ?
         <Carousel 
             arrows={true}
@@ -51,16 +51,19 @@ console.log(data)
             showDots={false}
             transitionDuration={500}
             style={{zIndex:"0"}}
+            containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
         >
             {
               data.map((e) => {
                   return <Box 
-                          m={"20px"} 
+                          m={{base:"10px",sm: '10px', md: '20px', lg: '20px', xl:'20px', '2xl': '20px'}} 
                           key={e} 
                           _hover={{
                             cursor:"pointer",
                           }} 
                           onClick={()=> { navigate(`/mens-home/${e._id}`) }}
+                          fontSize={{ base:'8px', sm: '9px', md: '12px', lg: '14px', xl:' 16px', '2xl': '16px'}}
                         >
                           <Image 
                             src={e.productImg} 
@@ -70,14 +73,12 @@ console.log(data)
                             <Text 
                               fontFamily={"Montserrat"} 
                               fontWeight={600} 
-                              fontSize={"14px"} 
                               >
                                 {e.tribeprice}
                               </Text>
                             <Text 
                               textDecoration={"line-through"} 
-                              color={"gray"} 
-                              fontSize={"14px"} 
+                              color={"gray"}
                             >
                               {e.strickprice}
                             </Text>

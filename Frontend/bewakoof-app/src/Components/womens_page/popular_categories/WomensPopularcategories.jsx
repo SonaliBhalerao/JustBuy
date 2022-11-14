@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const WomensPopularcategories = () => {
 
@@ -23,7 +24,7 @@ export const WomensPopularcategories = () => {
       {
         images.map((e) => {
           return <Box key={e} _hover={{cursor:"pointer"}} >
-            <img src={e} alt="" srcset="" />
+          <Link to="/women" >  <img src={e} alt="" srcset="" />  </Link>
           </Box>
         })
       }

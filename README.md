@@ -11,16 +11,16 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 ##  Tech-stack used
   
    ```
-   Frontend : React, Redux, Chakra UI
+   Frontend : React, Redux, Chakra UI, 
    
-   Backend   : Express, MongoDB, Atlas, Firebase
+   Backend   : Express, MongoDB, Node Js , Deployed backennd on Render
    ```
  ## Team members and contribution
 
  | Team Member            | Contribution                                                              |
 | ----------------- | ------------------------------------------------------------------ |
-| Adil | Home Page | Men page | Women Page | Admin Panel Frontend | Admin Panel Backend | NavBar | Footer
-| Sonali | Signup, Login Page  | SignUp And Login Express APIs
+| Adil | Home Page , Men page , Women Page , Admin Panel Frontend , Admin Panel Backend , NavBar  Footer
+| Sonali | Signup, Login Page   SignUp And Login Express APIs
 | Naveed | Single Product Page | Express - Products APIs
 | Sandhya | Products Display Page | Express - Pagination and Filter
 | Atul Kumar | Address Page and Cart Page | Express - Cart API
@@ -34,7 +34,7 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 | 3 | Dynamic cart page |
 | 4 | Dummy payment for debit card |
 | 5 | Admin panel created which have the abity to edit data on website |
-| 6 | Every user can only get his owb cart data |
+| 6 | Every user can only get his own cart data |
 
 
   
