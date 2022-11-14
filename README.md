@@ -61,28 +61,32 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 <img src="https://i.imgur.com/jK6Or3f.png" alt="Logo" marginTop='10px' width="1000" >
 <img src="https://i.imgur.com/4UMrdXP.png" alt="Logo" marginTop='10px' width="1000" >
 
- **5) Cart Page**
+  **5) Single Product Display Page**
+  ---
+<img src="https://i.imgur.com/gqVgRfN.png" alt="Logo" marginTop='10px' width="1000" >
+
+ **6) Cart Page**
   --- 
   <img src="https://i.imgur.com/s0bNkZv.png" alt="Logo" marginTop='10px' width="1000" >
 
-  **6) Address Details Page**
+  **7) Address Details Page**
   ---
 <img src="https://i.imgur.com/bnuKFHB.png" alt="Logo" marginTop='10px' width="1000" >
 
-  **7) Payment Page**
+  **8) Payment Page**
   ---
 <img src="https://i.imgur.com/giNWYfI.png" alt="Logo" marginTop='10px' width="1000" >
 
 
-  **7) ADMIN Login Page**
+  **9) ADMIN Login Page**
   ---
 <img src="https://i.imgur.com/25JWChh.png" alt="Logo" marginTop='10px' width="1000" >
 
-**6) Address Details Page Admin of all products on website**
+**10) Address Details Page Admin of all products on website**
   ---
 <img src="https://i.imgur.com/Y6WLcot.png" alt="Logo" marginTop='10px' width="1000" >
 
-**6) Edit Details Modal of Admin of all products on website**
+**11) Edit Details Modal of Admin of all products on website**
   ---
 <img src="https://i.imgur.com/geLrpRs.png" alt="Logo" marginTop='10px' width="1000" >
  
