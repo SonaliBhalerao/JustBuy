@@ -35,9 +35,8 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 | 4 | Dummy payment for debit card |
 | 5 | Admin panel created which have the abity to edit data on website |
 | 6 | Every user can only get his own cart data |
-| 7| user can only visit single product page if he is logged In |
-
-  
+| 7 | user can only visit single product page if he is logged In |
+| 8 | webiste is fully responsive in all the screens 
   
   ## Glimpse and screenshots of our cloned website:
   ---
