@@ -17,6 +17,7 @@ import { LoginAuth } from "../LoginAuth/LoginAuth";
 import Page_Not_Found from "./Page_Not_Found/Page_Not_Found";
 import { CartPage } from "./cart_page/CartPage";
 import { Payment } from "./payments_page/Payment";
+import Order_Completed from "./Order_Completed/Order_Completed";
 
 export const MainRoutes = () => {
 	return (
@@ -74,6 +75,7 @@ export const MainRoutes = () => {
 				<Route path={"/login"} element={<LoginPage />} />
 				<Route path={"/cart"} element={<CartPage />} />
 				<Route path={"/cart/payment"} element={<Payment />} />
+				<Route path={"/ordersuccess"} element={<Order_Completed/>} />
 				<Route path="*" element={<Page_Not_Found />}></Route>
 			</Routes>
 		</div>
