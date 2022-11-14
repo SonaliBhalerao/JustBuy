@@ -11,7 +11,7 @@ export default function LoginComponent(){
     const navigate = useNavigate();
     const location = useLocation()
 
-    const comingFrom =  location.state?.from?.pathname
+    const comingFrom =  location.state?.from?.pathname || "/"
 
     const [show, setShow] =useState(false)
     const handleClick = () => setShow(!show)
