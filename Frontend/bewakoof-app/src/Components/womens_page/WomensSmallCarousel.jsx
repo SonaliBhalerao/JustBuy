@@ -68,7 +68,9 @@ export const WomensSmallCarousel = () => {
                 images.map((e,i) => {
                    return <Box m={"0px"} key={e} >
                         <img src={e} alt="" srcset="" />
-                        <Text textAlign={"center"} fontSize={"12px"} fontFamily={"Montserrat"} >
+                        <Text textAlign={"center"} 
+                                fontFamily={"Montserrat"}   
+                                  fontSize={{ base:'6px', sm: '9px', md: '11px', lg: '11px', xl:' 12px', '2xl': '12px'}}>
                         {text[i]}
                         </Text>
                     </Box>
