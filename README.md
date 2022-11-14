@@ -46,7 +46,7 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
   ---
 <img src="https://i.imgur.com/dkqAPvC.png" alt="Logo" marginTop='10px' width="1000" >
 
-  **2) User Login Page**
+  **2) User Login Signup Page**
    ---
 <img src="https://i.imgur.com/dkqAPvC.png" alt="Logo" marginTop='10px' width="1000" >
 
@@ -61,7 +61,7 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 <img src="https://i.imgur.com/Yuo0ddR.png" alt="Logo" marginTop='10px' width="1000" >
   **5) Cart Page**
   ---
-<img src="https://i.imgur.com/dkqAPvC.png" alt="Logo" marginTop='10px' width="1000" >
+<img src="https://i.imgur.com/s0bNkZv.png" alt="Logo" marginTop='10px' width="1000" >
 
   **6) Address Details Page**
   ---
