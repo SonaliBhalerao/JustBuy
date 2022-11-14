@@ -39,12 +39,16 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 
   
   
-  **Sample Page Images**
+  ## Glimpse and screenshots of our cloned website:
   ---
   
   **1) Home Page**
   ---
-  
+
+
+
+<img src="https://i.imgur.com/dkqAPvC.png" alt="Logo" marginTop='10px' width="1000" >
+
   
   
   **2) User Login Page**
