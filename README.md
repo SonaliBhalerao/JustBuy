@@ -22,8 +22,8 @@ Bewakoof is the fashion e-commerce startup that stands out from the rest. It off
 | Adil | Home Page , Men page , Women Page , Admin Panel Frontend , Admin Panel Backend , NavBar  ,Footer
 | Sonali | Signup, Login Page   SignUp And Login Express APIs
 | Naveed Pasha | Single Product Page , Products Express APIs , Cart Express APIs 
-| Sandhya | Products Display Page | Express - Pagination and Filter
-| Atul Kumar | Address Page and Cart Page | Express - Cart API , Redux for Store
+| Sandhya | Products Display Page , Express - Pagination and Filter
+| Atul Kumar | Address Page and Cart Page , Express - Cart API , Redux for Store
 
 ## Features
 
